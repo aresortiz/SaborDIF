@@ -11,10 +11,10 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,54 +43,56 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Vendidas:  "
-                        android:fontFamily="@font/poppins"
                         android:textAlignment="textEnd"
                         android:textColor="@color/Gris"
-                        android:textSize="20dp"/>
+                        android:textSize="22dp" />
 
                     <TextView
                         android:id="@+id/contVendidas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="0"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/boton_mora"
                         android:clickable="false"
                         android:focusable="false"
                         android:fontFamily="@font/poppins_medium"
+                        android:text="0"
+                        android:layout_marginRight="60dp"
                         android:textAlignment="center"
                         android:textColor="@color/Gris"
-                        android:background="@color/Mora"
-                        android:textSize="21dp"/>
+                        android:textSize="21dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtDonadas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
+                        android:fontFamily="@font/poppins_medium"
                         android:text="Donadas:   "
                         android:textAlignment="textEnd"
                         android:textColor="@color/Gris"
-                        android:textSize="20dp" />
+                        android:textSize="22dp" />
 
                     <TextView
                         android:id="@+id/contDonadas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@color/AzulClaro"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/boton_azulito"
                         android:clickable="false"
                         android:focusable="false"
                         android:fontFamily="@font/poppins_medium"
                         android:text="0"
+                        android:layout_marginRight="60dp"
                         android:textAlignment="center"
                         android:textColor="@color/Gris"
                         android:textSize="20dp" />
@@ -98,23 +100,23 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnRegistroComensal"
-                    android:layout_width="320dp"
+                    android:layout_width="310dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="90dp"
+                    android:layout_marginTop="70dp"
                     android:background="@drawable/boton_lila"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
-                    android:text="Registrar nuevo comensal"
+                    android:text="Registrar Comensal"
                     android:textColor="@color/Negro"
                     android:textSize="19sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnRegistroDependiente"
-                    android:layout_width="320dp"
+                    android:layout_width="310dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="62dp"
                     android:background="@drawable/boton_rosa_claro"
-                    android:fontFamily="@font/poppins_light"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:text="Registrar dependiente"
                     android:textColor="@color/Negro"
@@ -122,11 +124,11 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnRegistroComida"
-                    android:layout_width="320dp"
+                    android:layout_width="310dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="62dp"
-                    android:background="@color/Aqua"
-                    android:fontFamily="@font/poppins_light"
+                    android:background="@drawable/boton_aqua"
+                    android:fontFamily="@font/poppins"
                     android:gravity="center"
                     android:text="Registrar comida"
                     android:textColor="@color/Negro"
@@ -137,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="45dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
