@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:context=".view.Inicio">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtBienvenida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="¡Bienvenido a SaborDIF!"
+                    android:textAlignment="center"
+                    android:textColor="#5A6978"
+                    android:textSize="30sp" />
+
+                <ImageView
+                    android:id="@+id/iconoLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    app:srcCompat="@drawable/login" />
+
+                <TextView
+                    android:id="@+id/txtInicioS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Iniciar sesión"
+                    android:textAlignment="center"
+                    android:textColor="#5A6978"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:id="@+id/txtID"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="55dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:inputType="text"
+                    android:text="  ID Comedor"
+                    android:textAlignment="textStart"
+                    android:textColor="#5A6978"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/idComedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:ems="10"
+                    android:entries="@array/arrIdComedor"
+                    android:fontFamily="@font/poppins_light"
+                    android:foregroundTint="@color/Azul"
+                    android:inputType="text"
+                    android:textColor="#5A6978"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:inputType="text"
+                    android:text="  Contraseña"
+                    android:textAlignment="textStart"
+                    android:textColor="#5A6978"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/contraC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnIngresar"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="65dp"
+                    android:background="@color/Morado"
+                    android:fontFamily="@font/poppins"
+                    android:text="Ingresar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

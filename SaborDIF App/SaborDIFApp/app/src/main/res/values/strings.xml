@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SaborDIF</string>
+    <string-array name="arrIdComedor">
+        <item>Comedor 1</item>
+        <item>Comedor 2</item>
+        <item>Comedor 3</item>
+        <item>Comedor 4</item>
+        <item>Comedor 5</item>
+
+    </string-array>
+</resources>
