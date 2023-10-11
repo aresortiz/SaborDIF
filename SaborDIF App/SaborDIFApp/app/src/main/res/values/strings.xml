@@ -1,10 +1,32 @@
 <resources>
     <string name="app_name">SaborDIF</string>
+    <string name="vendidas">Vendidas:</string>
+    <string name="_cero">0</string>
+    <string name="donadas">Donadas:</string>
+    <string name="_0">0</string>
+    <string name="registrar_comensal">Registrar Comensal</string>
+    <string name="registrar_dependiente">Registrar dependiente</string>
+    <string name="registrar_comida">Registrar comida</string>
+    <string name="bienvenido_a_sabordif">¡Bienvenido a SaborDIF!</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
+    <string name="id_comedor">ID Comedor</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="ingresarBtn">Ingresar</string>
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>
         <item>CAdolfoLopezM</item>
         <item>CHogaresAtizapan</item>
         <item>CRinconadaBonfil</item>
         <item>CSanJuanBusco</item>
+    </string-array>
+
+    <string-array name="arrIdCondicion">
+        <item>Discapacidad visual</item>
+        <item>Discapacidad auditiva</item>
+        <item>Discapacidad Motriz</item>
+        <item>Discapacidad intelectual o cognitiva</item>
+        <item>Embarazada</item>
+        <item>Tercera edad</item>
+
     </string-array>
 </resources>

@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="¡Bienvenido a SaborDIF!"
+                    android:text="@string/bienvenido_a_sabordif"
                     android:textAlignment="center"
                     android:textColor="#5A6978"
                     android:textSize="30sp" />
@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Iniciar sesión"
+                    android:text="@string/iniciar_sesi_n"
                     android:textAlignment="center"
                     android:textColor="#5A6978"
                     android:textSize="30sp" />
@@ -65,14 +65,15 @@
                     android:id="@+id/txtID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
+                    android:layout_marginStart="0dp"
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
-                    android:text=" ID Comedor"
+                    android:text="@string/id_comedor"
                     android:textAlignment="viewStart"
                     android:textColor="#5A6978"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    tools:ignore="TextViewEdits" />
 
                 <Spinner
                     android:id="@+id/idComedor"
@@ -90,10 +91,11 @@
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
-                    android:text=" Contraseña"
+                    android:text="@string/contrase_a"
                     android:textAlignment="viewStart"
                     android:textColor="#5A6978"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    tools:ignore="TextViewEdits" />
 
                 <EditText
                     android:id="@+id/contraC"
@@ -109,7 +111,7 @@
                     android:layout_marginTop="60dp"
                     android:background="@drawable/boton_morado"
                     android:fontFamily="@font/poppins"
-                    android:text="Ingresar"
+                    android:text="@string/ingresarBtn"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp" />
 

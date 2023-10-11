@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sabordifapp.R
+import com.example.sabordifapp.databinding.FragmentComensalBinding
 import com.example.sabordifapp.viewmodel.ComensalViewModel
 
 class Comensal : Fragment() {
+
+    private lateinit var binding:FragmentComensalBinding
 
     companion object {
         fun newInstance() = Comensal()
@@ -22,12 +25,6 @@ class Comensal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_comensal, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ComensalViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
