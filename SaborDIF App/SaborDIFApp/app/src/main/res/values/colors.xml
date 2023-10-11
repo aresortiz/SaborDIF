@@ -10,5 +10,6 @@
     <color name="Azul">#7AADBF</color> //Fondo
     <color name="AzulClaro">#B2DDF7</color> //Botones
     <color name="Gris">#5A6978</color> //Texto
-    <color name="Mora">#9898D8</color>
+    <color name="Mora">#9898D8</color> //Botones
+    <color name="Hueso">#D4D4D4</color> //Botones
 </resources>
