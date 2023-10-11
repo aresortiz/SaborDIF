@@ -12,6 +12,13 @@
     <string name="id_comedor">ID Comedor</string>
     <string name="contrase_a">Contraseña</string>
     <string name="ingresarBtn">Ingresar</string>
+    <string name="registro_comensal">REGISTRO COMENSAL</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido_paterno">Apellido paterno</string>
+    <string name="apellido_materno">Apellido materno</string>
+    <string name="curp">CURP</string>
+    <string name="escanear_qr">Escanear QR</string>
+    <string name="registrar">Registrar</string>
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>
         <item>CAdolfoLopezM</item>
@@ -27,6 +34,7 @@
         <item>Discapacidad intelectual o cognitiva</item>
         <item>Embarazada</item>
         <item>Tercera edad</item>
+        <item>Ninguna/No aplica</item>
 
     </string-array>
 </resources>

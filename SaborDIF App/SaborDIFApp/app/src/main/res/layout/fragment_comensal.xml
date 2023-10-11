@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/panmorada"
+    android:background="@drawable/moradopantalla"
     tools:context=".view.ComensalView">
 
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,39 +35,41 @@
                     android:id="@+id/txtRegisComensal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="REGISTRO COMENSAL"
-                    android:textSize="32dp"
+                    android:text="@string/registro_comensal"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="32sp"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/Negro"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:layout_marginTop="50dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nombreComensal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="40dp"
                         android:background="@color/Hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="Nombre" />
+                        android:hint="@string/nombre" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtApellidoP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="25dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputApellidoP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Apellido paterno"
+                        android:hint="@string/apellido_paterno"
                         android:background="@color/Hueso"
                         android:fontFamily="@font/poppins"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +78,7 @@
                     android:id="@+id/txtApellidoM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="25dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputApellidoM"
@@ -84,39 +86,59 @@
                         android:layout_height="wrap_content"
                         android:background="@color/Hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="Apellido materno" />
+                        android:hint="@string/apellido_materno" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="25dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="CURP"
+                        android:hint="@string/curp"
                         android:fontFamily="@font/poppins"
                         android:background="@color/Hueso"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spnCondicion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="27dp"
                     android:entries="@array/arrIdCondicion" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRegistrar"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="@string/registrar"
+                    android:fontFamily="@font/poppins"
+                    android:background="@drawable/boton_rosa_claro"
+                    android:textSize="20sp"/>
+
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton2"
+                    android:id="@+id/escanearQR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:clickable="true"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="45dp"
                     android:src="@android:drawable/ic_menu_camera"
                     android:focusable="true" />
+
+                <TextView
+                    android:id="@+id/txtQR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/Hueso"
+                    android:layout_marginTop="10dp"
+                    android:textSize="19sp"
+                    android:text="@string/escanear_qr" />
 
             </LinearLayout>
         </ScrollView>

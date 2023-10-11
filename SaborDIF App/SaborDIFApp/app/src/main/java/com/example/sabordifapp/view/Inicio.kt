@@ -39,7 +39,6 @@ class Inicio : Fragment() {
             findNavController().navigate(accion)
 
 
-
         }
     }
 
