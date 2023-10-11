@@ -6,27 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.sabordifapp.R
-import com.example.sabordifapp.databinding.FragmentRegistroBinding
-import com.example.sabordifapp.viewmodel.RegistroViewModel
+import com.example.sabordifapp.databinding.FragmentComensalBinding
+import com.example.sabordifapp.viewmodel.ComensalViewModel
 
-class Registro : Fragment() {
+class ComensalView : Fragment() {
 
-    //binding
-    private lateinit var binding: FragmentRegistroBinding
-
+    private lateinit var binding:FragmentComensalBinding
 
     companion object {
-        fun newInstance() = Registro()
+        fun newInstance() = ComensalView()
     }
 
-    private lateinit var viewModel: RegistroViewModel
+    private lateinit var viewModel: ComensalViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_registro, container, false)
+        return inflater.inflate(R.layout.fragment_comensal, container, false)
     }
-
 
 }

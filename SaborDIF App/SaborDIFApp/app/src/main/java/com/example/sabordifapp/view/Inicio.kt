@@ -37,6 +37,8 @@ class Inicio : Fragment() {
             val accion = InicioDirections.actionInicioToRegistro(tipo)
             findNavController().navigate(accion)
 
+
+
         }
     }
 

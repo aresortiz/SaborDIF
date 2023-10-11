@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/panmorada"
-    tools:context=".view.Comensal">
+    tools:context=".view.ComensalView">
 
     <FrameLayout
         android:layout_width="0dp"
@@ -112,8 +112,11 @@
                     android:id="@+id/floatingActionButton2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
                     android:clickable="true"
-                    android:src="@android:drawable/ic_menu_camera" />
+                    android:layout_marginTop="20"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:focusable="true" />
 
             </LinearLayout>
         </ScrollView>

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registro"
-        android:name="com.example.sabordifapp.view.Registro"
+        android:name="com.example.sabordifapp.view.RegistroView"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
         <argument
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/comensal"
-        android:name="com.example.sabordifapp.view.Comensal"
+        android:name="com.example.sabordifapp.view.ComensalView"
         android:label="fragment_comensal"
         tools:layout="@layout/fragment_comensal" />
 </navigation>
