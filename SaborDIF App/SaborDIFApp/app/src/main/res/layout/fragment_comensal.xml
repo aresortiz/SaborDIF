@@ -54,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
-                        android:background="@color/Hueso"
+                        android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
                         android:hint="@string/nombre" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +70,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/apellido_paterno"
-                        android:background="@color/Hueso"
+                        android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +84,7 @@
                         android:id="@+id/inputApellidoM"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/Hueso"
+                        android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
                         android:hint="@string/apellido_materno" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +99,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/curp"
                         android:fontFamily="@font/poppins"
-                        android:background="@color/Hueso"/>
+                        android:background="@drawable/boton_hueso"
+                        android:foreground="@color/Hueso"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner

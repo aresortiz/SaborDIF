@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/azulpantalla"
     tools:context=".view.Inicio">
 
     <FrameLayout
@@ -32,32 +32,41 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/applogo" />
+
                 <TextView
                     android:id="@+id/txtBienvenida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/bienvenido_a_sabordif"
                     android:textAlignment="center"
-                    android:textColor="#5A6978"
+                    android:textColor="@color/Navy"
                     android:textSize="30sp" />
 
                 <ImageView
                     android:id="@+id/iconoLogin"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/login" />
 
                 <TextView
                     android:id="@+id/txtInicioS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="@string/iniciar_sesi_n"
                     android:textAlignment="center"
-                    android:textColor="#5A6978"
+                    android:textColor="@color/Navy"
                     android:textSize="30sp" />
 
 
@@ -66,12 +75,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
                     android:text="@string/id_comedor"
                     android:textAlignment="viewStart"
-                    android:textColor="#5A6978"
+                    android:textColor="@color/Navy"
                     android:textSize="22sp"
                     tools:ignore="TextViewEdits" />
 
@@ -79,7 +88,7 @@
                     android:id="@+id/idComedor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:entries="@array/arrIdComedor"
                     android:spinnerMode="dropdown"
                     android:textAlignment="textStart" />
@@ -88,12 +97,12 @@
                     android:id="@+id/txtContra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/poppins"
                     android:inputType="text"
                     android:text="@string/contrase_a"
                     android:textAlignment="viewStart"
-                    android:textColor="#5A6978"
+                    android:textColor="@color/Navy"
                     android:textSize="22sp"
                     tools:ignore="TextViewEdits" />
 
@@ -108,12 +117,13 @@
                     android:id="@+id/btnIngresar"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:background="@drawable/boton_morado"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/boton_navy"
                     android:fontFamily="@font/poppins"
                     android:text="@string/ingresarBtn"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginBottom="140dp"/>
 
             </LinearLayout>
         </ScrollView>
