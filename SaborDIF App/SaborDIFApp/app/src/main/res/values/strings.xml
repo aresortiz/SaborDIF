@@ -19,6 +19,9 @@
     <string name="curp">CURP</string>
     <string name="escanear_qr">Escanear QR</string>
     <string name="registrar">Registrar</string>
+    <string name="credenciales">Por favor ingrese sus credenciales:</string>
+    <string name="acceder">Acceder</string>
+
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>
         <item>CAdolfoLopezM</item>
@@ -30,7 +33,7 @@
     <string-array name="arrIdCondicion">
         <item>Discapacidad visual</item>
         <item>Discapacidad auditiva</item>
-        <item>Discapacidad Motriz</item>
+        <item>Discapacidad motriz</item>
         <item>Discapacidad intelectual o cognitiva</item>
         <item>Embarazada</item>
         <item>Tercera edad</item>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/moradopantalla"
+    android:background="@drawable/panverde"
     tools:context=".view.ComensalView">
 
     <FrameLayout
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/registro_comensal"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="9dp"
                     android:textSize="32sp"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/Negro"
@@ -46,14 +46,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/nombreComensal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="45dp"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
                         android:hint="@string/nombre" />
@@ -63,7 +62,7 @@
                     android:id="@+id/txtApellidoP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp">
+                    android:layout_marginTop="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputApellidoP"
@@ -78,7 +77,7 @@
                     android:id="@+id/txtApellidoM"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp">
+                    android:layout_marginTop="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputApellidoM"
@@ -87,38 +86,52 @@
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
                         android:hint="@string/apellido_materno" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCURP"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp">
+                    android:layout_marginTop="15dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputCURP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/curp"
-                        android:fontFamily="@font/poppins"
                         android:background="@drawable/boton_hueso"
-                        android:foreground="@color/Hueso"/>
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/curp" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtCondicion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Condición"
+                    android:background="@drawable/boton_hueso"
+                    android:layout_marginTop="25dp"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/spnCondicion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="5dp"
                     android:entries="@array/arrIdCondicion" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnRegistrar"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="40dp"
                     android:text="@string/registrar"
-                    android:fontFamily="@font/poppins"
-                    android:background="@drawable/boton_rosa_claro"
+                    android:textColor="@color/Hueso"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:background="@drawable/boton_verde"
                     android:textSize="20sp"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -127,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:clickable="true"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="20dp"
                     android:src="@android:drawable/ic_menu_camera"
                     android:focusable="true" />
 
@@ -135,11 +148,11 @@
                     android:id="@+id/txtQR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/Hueso"
                     android:layout_marginTop="10dp"
-                    android:textSize="19sp"
-                    android:text="@string/escanear_qr" />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/escanear_qr"
+                    android:textColor="@color/Negro"
+                    android:textSize="19sp" />
 
             </LinearLayout>
         </ScrollView>

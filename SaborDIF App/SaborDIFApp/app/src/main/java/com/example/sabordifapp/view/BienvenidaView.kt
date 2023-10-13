@@ -1,7 +1,7 @@
 package com.example.sabordifapp.view
 
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,25 +9,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.R
-import com.example.sabordifapp.databinding.FragmentRegistroBinding
-import com.example.sabordifapp.viewmodel.RegistroViewModel
+import com.example.sabordifapp.databinding.FragmentBienvenidaBinding
+import com.example.sabordifapp.viewmodel.BienvenidaViewModel
 
-class RegistroView : Fragment() {
+class BienvenidaView : Fragment() {
 
-    //binding
-    private lateinit var binding: FragmentRegistroBinding
-    private val viewModel:RegistroViewModel by viewModels()
+    //bidning
+    private lateinit var binding: FragmentBienvenidaBinding
+    private val viewModel:BienvenidaViewModel by viewModels()
 
     companion object {
-        fun newInstance() = RegistroView()
+        fun newInstance() = BienvenidaView()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentRegistroBinding.inflate(layoutInflater)
+        binding = FragmentBienvenidaBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -36,15 +35,11 @@ class RegistroView : Fragment() {
         registrarEventos()
     }
 
-    private fun registrarEventos(){
-        binding.btnRegistroComensal.setOnClickListener {
-            //val comedorRegistrado = binding.btnRegistroComensal.toString()
-
-            Log.e("Prueba", "boton para pasar a comensal")
-            val accion = RegistroViewDirections.actionRegistroToComensal()
+    private fun registrarEventos() {
+        binding.btnIniciarSesion.setOnClickListener {
+            val accion = BienvenidaViewDirections.actionBienvenidaToInicio()
             findNavController().navigate(accion)
         }
     }
-
 
 }

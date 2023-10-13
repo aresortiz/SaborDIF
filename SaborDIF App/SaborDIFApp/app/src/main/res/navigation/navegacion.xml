@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
-    app:startDestination="@id/inicio">
+    app:startDestination="@id/bienvenida">
 
     <fragment
         android:id="@+id/inicio"
@@ -19,9 +19,6 @@
         android:name="com.example.sabordifapp.view.RegistroView"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" >
-        <argument
-            android:name="comedorRegistrado"
-            app:argType="string" />
         <action
             android:id="@+id/action_registro_to_comensal"
             app:destination="@id/comensal" />
@@ -30,5 +27,18 @@
         android:id="@+id/comensal"
         android:name="com.example.sabordifapp.view.ComensalView"
         android:label="fragment_comensal"
-        tools:layout="@layout/fragment_comensal" />
+        tools:layout="@layout/fragment_comensal" >
+        <action
+            android:id="@+id/action_comensal_to_registro"
+            app:destination="@id/registro" />
+    </fragment>
+    <fragment
+        android:id="@+id/bienvenida"
+        android:name="com.example.sabordifapp.view.BienvenidaView"
+        android:label="fragment_bienvenida"
+        tools:layout="@layout/fragment_bienvenida" >
+        <action
+            android:id="@+id/action_bienvenida_to_inicio"
+            app:destination="@id/inicio" />
+    </fragment>
 </navigation>
