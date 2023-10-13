@@ -20,21 +20,24 @@ class ResponsableVM {
     private val postearAPI by lazy {
         retrofit.create(ResponsableAPI::class.java)
     }
-    fun validarLogin(responsable: Responsable){
+    fun validarLogin(responsable: Responsable, callback: (Access?) -> Unit){
         val call = postearAPI.validarLogin(responsable)
         call.enqueue(object : Callback<Access> {
             override fun onResponse(call: Call<Access>, response: Response<Access>) {
                 if(response.isSuccessful) {
                     println("El login es: ${response.body()}")
                     Log.d("API_TEST", "Apertura registrada exitosamente: ${response.body()}")
+                    callback(response.body())
                 }else{
                     Log.e("API_TEST", "FAILED")
+                    callback(null)
                 }
             }
 
             override fun onFailure(call: Call<Access>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }
