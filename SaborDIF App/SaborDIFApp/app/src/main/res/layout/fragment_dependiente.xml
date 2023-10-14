@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/panmorada"
-    tools:context=".view.ComensalView">
+    android:background="@drawable/panrosa"
+    tools:context=".view.Dependiente">
 
     <FrameLayout
         android:layout_width="0dp"
@@ -32,126 +32,91 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtRegisComensal"
+                    android:id="@+id/txtRegisDependiente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/registro_comensal"
-                    android:layout_marginBottom="9dp"
-                    android:textSize="32sp"
+                    android:text="@string/registro_dependiente"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="30sp"
                     android:fontFamily="@font/poppins_semibold"
                     android:textColor="@color/Negro"
                     android:textAlignment="center"
-                    android:layout_marginTop="70dp"/>
+                    android:layout_marginTop="50dp"/>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:src="@drawable/user"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"/>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nombreComensal"
+                    android:id="@+id/IDDependiente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputNombre"
+                        android:id="@+id/inputIDDependiente"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="45dp"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/nombre" />
+                        android:hint="@string/id_dependiente" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/relationship" />
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtApellidoP"
+                    android:id="@+id/txtIDComensal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="20dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputApellidoP"
+                        android:id="@+id/inputIDComensal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/apellido_paterno"
+                        android:hint="ID Comensal Asociado"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtApellidoM"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputApellidoM"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/boton_hueso"
-                        android:fontFamily="@font/poppins"
-                        android:hint="@string/apellido_materno" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtCURP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputCURP"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/boton_hueso"
-                        android:fontFamily="@font/poppins"
-                        android:hint="@string/curp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/txtCondicion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:text="Condición"
-                    android:background="@drawable/boton_hueso"
-                    android:layout_marginTop="25dp"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spnCondicion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_marginTop="5dp"
-                    android:entries="@array/arrIdCondicion" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnRegistrar"
+                    android:id="@+id/btnRegistrarDependiente"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="50dp"
                     android:text="@string/registrar"
                     android:textColor="@color/Hueso"
                     android:fontFamily="@font/poppins_semibold"
-                    android:background="@drawable/boton_morado"
+                    android:background="@drawable/boton_rosa_fuerte"
                     android:textSize="20sp"/>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/escanearQR"
+                    android:id="@+id/escanearQRcomensal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:clickable="true"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="40dp"
                     android:src="@android:drawable/ic_menu_camera"
                     android:focusable="true" />
 
                 <TextView
-                    android:id="@+id/txtQR"
+                    android:id="@+id/txtQRcomensal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/escanear_qr"
-                    android:textColor="@color/Hueso"
+                    android:textColor="@color/Navy"
                     android:textSize="19sp" />
 
             </LinearLayout>

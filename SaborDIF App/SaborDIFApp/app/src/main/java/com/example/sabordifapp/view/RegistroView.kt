@@ -33,15 +33,23 @@ class RegistroView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registrarEventos()
+        registrarComensal()
+        registrarDependiente()
     }
 
-    private fun registrarEventos(){
+    private fun registrarComensal(){
         binding.btnRegistroComensal.setOnClickListener {
             //val comedorRegistrado = binding.btnRegistroComensal.toString()
 
-            Log.e("Prueba", "boton para pasar a comensal")
+            //Log.e("Prueba", "boton para pasar a comensal")
             val accion = RegistroViewDirections.actionRegistroToComensal()
+            findNavController().navigate(accion)
+        }
+    }
+
+    private fun registrarDependiente(){
+        binding.btnRegistroDependiente.setOnClickListener {
+            val accion = RegistroViewDirections.actionRegistroToDependiente()
             findNavController().navigate(accion)
         }
     }

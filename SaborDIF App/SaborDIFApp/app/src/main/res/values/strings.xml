@@ -21,6 +21,8 @@
     <string name="registrar">Registrar</string>
     <string name="credenciales">Por favor ingrese sus credenciales:</string>
     <string name="acceder">Acceder</string>
+    <string name="registro_dependiente">REGISTRO DEPENDIENTE</string>
+    <string name="id_dependiente">ID Dependiente</string>
 
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>
@@ -38,6 +40,6 @@
         <item>Embarazada</item>
         <item>Tercera edad</item>
         <item>Ninguna/No aplica</item>
-
     </string-array>
+
 </resources>

@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_registro_to_comensal"
             app:destination="@id/comensal" />
+        <action
+            android:id="@+id/action_registro_to_dependiente"
+            app:destination="@id/dependiente" />
     </fragment>
     <fragment
         android:id="@+id/comensal"
@@ -40,5 +43,14 @@
         <action
             android:id="@+id/action_bienvenida_to_inicio"
             app:destination="@id/inicio" />
+    </fragment>
+    <fragment
+        android:id="@+id/dependiente"
+        android:name="com.example.sabordifapp.view.Dependiente"
+        android:label="fragment_dependiente"
+        tools:layout="@layout/fragment_dependiente" >
+        <action
+            android:id="@+id/action_dependiente_to_registro"
+            app:destination="@id/registro" />
     </fragment>
 </navigation>

@@ -38,7 +38,7 @@ class BienvenidaView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        responsableC.validarLogin(Responsable(1, "ciscoOO"))
+        responsableC.validarLogin(Responsable(1, "cisco123"))
         comedorKK.descargarNombresComedor()
         registrarEventos()
     }

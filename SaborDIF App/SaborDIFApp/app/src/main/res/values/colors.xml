@@ -12,5 +12,6 @@
     <color name="Gris">#5A6978</color> //Texto
     <color name="Mora">#9898D8</color> //Botones
     <color name="Hueso">#D4D4D4</color> //Botones
-    <color name="Verde">#5D9F64</color>
+    <color name="Verde">#5D9F64</color> //Botones
+    <color name="RosaFuerte">#D36583</color> //Botones
 </resources>
