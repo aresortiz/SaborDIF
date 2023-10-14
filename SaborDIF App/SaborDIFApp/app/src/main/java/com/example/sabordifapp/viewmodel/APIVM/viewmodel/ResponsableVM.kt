@@ -2,6 +2,8 @@ package com.example.sabordifapp.viewmodel.APIVM.viewmodel
 
 import android.util.Log
 import com.example.sabordifapp.model.API.Access.Access
+import com.example.sabordifapp.model.API.comedor.Comedor
+import com.example.sabordifapp.model.API.comedor.ComedorAPI
 import com.example.sabordifapp.model.API.responsable.Responsable
 import com.example.sabordifapp.model.API.responsable.ResponsableAPI
 import retrofit2.Call

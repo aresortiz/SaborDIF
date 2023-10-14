@@ -4,6 +4,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ComedorAPI {
-    @GET("nombres")
+    @GET("comedor/nombres")
     fun descargarNombresComedor(): Call<List<Comedor>>
 }

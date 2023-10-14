@@ -6,6 +6,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ResponsableAPI {
-    @POST("login")
+    @POST("responsable/login")
     fun validarLogin(@Body responsable: Responsable): Call<Access>
 }
