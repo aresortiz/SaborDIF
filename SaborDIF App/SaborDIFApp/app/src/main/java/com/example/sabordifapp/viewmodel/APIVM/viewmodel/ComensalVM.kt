@@ -24,26 +24,28 @@ class ComensalVM {
     private val descargarAPI by lazy {
         retrofit.create(ComensalAPI::class.java)
     }
-    fun descargarComensales(){
+    fun descargarComensales(callback: (List<Comensal>?) -> Unit){
         val call = descargarAPI.descargarComensales()
         call.enqueue(object : Callback<List<Comensal>> {
             override fun onResponse(call: Call<List<Comensal>>, response: Response<List<Comensal>>){
                 if(response.isSuccessful){
                     println("Lista de comensales: ${response.body()}")
                     Log.d("API_TEST", "Lista de comensales: ${response.body()}")
-
+                    callback(response.body())
                 }else{
                     Log.e("API_TEST", "FAILED")
+                    callback(null)
                 }
             }
             override fun onFailure(call: Call<List<Comensal>>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }
 
-    fun descargarDependientes(idResponsable: Int){
+    fun descargarDependientes(idResponsable: Int, callback: (List<Comensal>?) -> Unit){
         val call = descargarAPI.descargarDependientes(idResponsable)
         call.enqueue(object : Callback<List<Comensal>> {
             override fun onResponse(call: Call<List<Comensal>>, response: Response<List<Comensal>>){
@@ -53,11 +55,13 @@ class ComensalVM {
 
                 }else{
                     Log.e("API_TEST", "FAILED")
+                    callback(null)
                 }
             }
             override fun onFailure(call: Call<List<Comensal>>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }

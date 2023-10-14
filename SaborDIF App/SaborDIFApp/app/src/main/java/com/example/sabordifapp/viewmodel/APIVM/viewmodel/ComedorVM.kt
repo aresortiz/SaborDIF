@@ -19,21 +19,23 @@ class ComedorVM {
     private val descargarAPI by lazy {
         retrofit.create(ComedorAPI::class.java)
     }
-    fun descargarNombresComedor(){
+    fun descargarNombresComedor(callback: (List<Comedor>?) -> Unit){
         val call = descargarAPI.descargarNombresComedor()
         call.enqueue(object : Callback<List<Comedor>> {
             override fun onResponse(call: Call<List<Comedor>>, response: Response<List<Comedor>>){
                 if(response.isSuccessful){
                     println("Lista de comedores: ${response.body()}")
                     Log.d("API_TEST", "Lista de comedores: ${response.body()}")
-
+                    callback(response.body())
                 }else{
                     Log.e("API_TEST", "FAILED")
+                    callback(null)
                 }
             }
             override fun onFailure(call: Call<List<Comedor>>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }

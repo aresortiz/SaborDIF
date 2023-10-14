@@ -24,21 +24,23 @@ class CondicionVM {
     private val postearAPI by lazy {
         retrofit.create(CondicionAPI::class.java)
     }
-    fun descargarCondiciones(){
+    fun descargarCondiciones(callback: (List<Condicion>?) -> Unit){
         val call = descargarAPI.descargarCondiciones()
         call.enqueue(object : Callback<List<Condicion>> {
             override fun onResponse(call: Call<List<Condicion>>, response: Response<List<Condicion>>){
                 if(response.isSuccessful){
                     println("Lista de condiciones: ${response.body()}")
                     Log.d("API_TEST", "Lista de condiciones: ${response.body()}")
-
+                    callback(response.body())
                 }else{
                     Log.e("API_TEST", "FAILED")
+                    callback(null)
                 }
             }
             override fun onFailure(call: Call<List<Condicion>>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }
