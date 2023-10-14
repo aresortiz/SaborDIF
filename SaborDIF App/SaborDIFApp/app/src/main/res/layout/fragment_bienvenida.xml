@@ -35,7 +35,7 @@
                     android:id="@+id/logoApp"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginTop="85dp"
+                    android:layout_marginTop="90dp"
                     android:src="@drawable/logoapp"
                     android:layout_marginBottom="85dp"/>
 
@@ -43,6 +43,7 @@
                     android:id="@+id/txtBienvenida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/bienvenido_a_sabordif"
                     android:textAlignment="center"
@@ -53,7 +54,7 @@
                     android:id="@+id/btnIniciarSesion"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="110dp"
+                    android:layout_marginTop="130dp"
                     android:layout_marginBottom="180dp"
                     android:background="@drawable/boton_navy"
                     android:fontFamily="@font/poppins_medium"

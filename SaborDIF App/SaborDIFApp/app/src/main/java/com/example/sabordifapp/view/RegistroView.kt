@@ -35,6 +35,7 @@ class RegistroView : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         registrarComensal()
         registrarDependiente()
+        registrarComida()
     }
 
     private fun registrarComensal(){
@@ -50,6 +51,13 @@ class RegistroView : Fragment() {
     private fun registrarDependiente(){
         binding.btnRegistroDependiente.setOnClickListener {
             val accion = RegistroViewDirections.actionRegistroToDependiente()
+            findNavController().navigate(accion)
+        }
+    }
+
+    private fun registrarComida(){
+        binding.btnRegistroComida.setOnClickListener {
+            val accion = RegistroViewDirections.actionRegistroToComida()
             findNavController().navigate(accion)
         }
     }

@@ -17,8 +17,8 @@ import com.example.sabordifapp.viewmodel.BienvenidaViewModel
 
 class BienvenidaView : Fragment() {
 
-    var responsableC: ResponsableVM = ResponsableVM()
-    var comedorKK: ComedorVM = ComedorVM()
+    //var responsableC: ResponsableVM = ResponsableVM()
+    //var comedorKK: ComedorVM = ComedorVM()
 
     //bidning
     private lateinit var binding: FragmentBienvenidaBinding
@@ -38,8 +38,8 @@ class BienvenidaView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        responsableC.validarLogin(Responsable(1, "cisco123"))
-        comedorKK.descargarNombresComedor()
+        //responsableC.validarLogin(Responsable(1, "cisco123"))
+        //comedorKK.descargarNombresComedor()
         registrarEventos()
     }
 

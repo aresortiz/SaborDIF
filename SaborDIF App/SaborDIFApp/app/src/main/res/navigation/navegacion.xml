@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_registro_to_dependiente"
             app:destination="@id/dependiente" />
+        <action
+            android:id="@+id/action_registro_to_comida"
+            app:destination="@id/comida" />
     </fragment>
     <fragment
         android:id="@+id/comensal"
@@ -51,6 +54,36 @@
         tools:layout="@layout/fragment_dependiente" >
         <action
             android:id="@+id/action_dependiente_to_registro"
+            app:destination="@id/registro" />
+    </fragment>
+    <fragment
+        android:id="@+id/comida"
+        android:name="com.example.sabordifapp.view.Comida"
+        android:label="fragment_comida"
+        tools:layout="@layout/fragment_comida" >
+        <action
+            android:id="@+id/action_comida_to_comidaAdicional"
+            app:destination="@id/comidaAdicional" />
+        <action
+            android:id="@+id/action_comida_to_pagoDonativo"
+            app:destination="@id/pagoDonativo" />
+    </fragment>
+    <fragment
+        android:id="@+id/comidaAdicional"
+        android:name="com.example.sabordifapp.view.ComidaAdicional"
+        android:label="fragment_comida_adicional"
+        tools:layout="@layout/fragment_comida_adicional" >
+        <action
+            android:id="@+id/action_comidaAdicional_to_pagoDonativo"
+            app:destination="@id/pagoDonativo" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagoDonativo"
+        android:name="com.example.sabordifapp.view.PagoDonativo"
+        android:label="fragment_pago_donativo"
+        tools:layout="@layout/fragment_pago_donativo" >
+        <action
+            android:id="@+id/action_pagoDonativo_to_registro"
             app:destination="@id/registro" />
     </fragment>
 </navigation>

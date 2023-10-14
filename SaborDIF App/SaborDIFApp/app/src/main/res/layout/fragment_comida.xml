@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/panrosa"
-    tools:context=".view.Dependiente">
+    android:background="@drawable/panazul"
+    tools:context=".view.Comida">
 
     <FrameLayout
         android:layout_width="0dp"
@@ -32,27 +32,28 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtRegisDependiente"
+                    android:id="@+id/txtRegisComida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="25dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="@string/registro_dependiente"
+                    android:text="@string/registro_comida"
                     android:textAlignment="center"
                     android:textColor="@color/Negro"
-                    android:textSize="32sp" />
+                    android:textSize="35sp" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imagComida"
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:src="@drawable/user"
+                    android:layout_height="100dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"/>
+                    android:src="@drawable/restaurant" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:layout_marginTop="15dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -63,17 +64,17 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/IDDependiente"
+                            android:id="@+id/NombreComensal"
                             android:layout_width="318dp"
                             android:layout_height="wrap_content">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/inputIDDependiente"
+                                android:id="@+id/inputNombreComensal"
                                 android:layout_width="318dp"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/boton_hueso"
                                 android:fontFamily="@font/poppins"
-                                android:hint="@string/id_dependiente" />
+                                android:hint="@string/nombre_id_del_comensal" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -89,73 +90,49 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="30dp"
                             android:clickable="true"
-                            android:src="@android:drawable/ic_menu_camera"
-                            android:focusable="true" />
+                            android:src="@android:drawable/ic_menu_camera" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <ImageView
-                    android:id="@+id/imageView2"
+                <TextView
+                    android:id="@+id/txtComidaAdicional"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/relationship" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/comida_adicional"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/txtIDComensal"
-                            android:layout_width="318dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/inputIDComensal"
-                                android:layout_width="318dp"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/boton_hueso"
-                                android:fontFamily="@font/poppins"
-                                android:hint="@string/id_comensal_asociado" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:orientation="vertical">
-
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/escanearQRcomensal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="30dp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:src="@android:drawable/ic_menu_camera" />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:orientation="horizontal"/>
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnRegistrarDependiente"
+                    android:id="@+id/btnSi"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="40dp"
-                    android:text="@string/registrar"
+                    android:text="@string/si"
                     android:textColor="@color/Hueso"
                     android:fontFamily="@font/poppins_semibold"
-                    android:background="@drawable/boton_rosa_fuerte"
+                    android:background="@drawable/boton_navy"
+                    android:textSize="20sp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNo"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="@string/no"
+                    android:textColor="@color/Hueso"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:background="@drawable/boton_navy"
                     android:textSize="20sp"/>
 
             </LinearLayout>

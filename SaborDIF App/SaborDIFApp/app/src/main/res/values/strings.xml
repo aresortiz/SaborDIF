@@ -23,6 +23,19 @@
     <string name="acceder">Acceder</string>
     <string name="registro_dependiente">REGISTRO DEPENDIENTE</string>
     <string name="id_dependiente">ID Dependiente</string>
+    <string name="registro_comida">REGISTRO COMIDA</string>
+    <string name="id_comensal_asociado">ID Comensal Asociado</string>
+    <string name="nombre_id_del_comensal">Nombre o ID del comensal</string>
+    <string name="comida_adicional">¿Desea llevar comida adicional?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="registro_comida_adicional">REGISTRO COMIDA ADICIONAL</string>
+    <string name="proceder_al_pago">Proceder al pago</string>
+    <string name="para_quienes">¿Para quién?</string>
+    <string name="pago_13">Pago: $13</string>
+    <string name="pago_o_donativo">¿PAGO O DONATIVO?</string>
+    <string name="donacion_0">Donación: $0</string>
+    <string name="finalizar">Finalizar</string>
 
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>
@@ -40,6 +53,26 @@
         <item>Embarazada</item>
         <item>Tercera edad</item>
         <item>Ninguna/No aplica</item>
+    </string-array>
+
+    <string-array name="arrComidaAdicionalCantidad">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="arrPersonaComidaAd">
+        <item>Rosa Itzel Figueroa Rosas</item>
+        <item>Arturo Montes González</item>
+        <item>Laura Sofía Martínez Jiménez</item>
+        <item>Ares Ortiz Botello</item>
+        <item>Andrés Iván Rodríguez Méndez</item>
+        <item>Alan Alcántara Ávila</item>
+        <item>Diego Manjarrez Viveros</item>
     </string-array>
 
 </resources>
