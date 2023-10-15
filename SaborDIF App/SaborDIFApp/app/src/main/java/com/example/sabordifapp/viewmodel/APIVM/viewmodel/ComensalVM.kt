@@ -1,6 +1,7 @@
 package com.example.sabordifapp.viewmodel.APIVM.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import com.example.sabordifapp.model.API.comensal.Comensal
 import com.example.sabordifapp.model.API.comensal.ComensalAPI
 import com.example.sabordifapp.model.API.comensal.ComensalId
@@ -13,7 +14,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ComensalVM {
+class ComensalVM:ViewModel() {
 
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -68,14 +69,16 @@ class ComensalVM {
     private val postearAPI by lazy {
         retrofit.create(ComensalAPI::class.java)
     }
-    fun registrarNuevoComensal(comensal: ComensalRegistrar){
+    fun registrarNuevoComensal(comensal: ComensalRegistrar, callback: (ComensalId?) -> Unit){
         val call = postearAPI.registrarNuevoComensal(comensal)
         call.enqueue(object : Callback<ComensalId> {
             override fun onResponse(call: Call<ComensalId>, response: Response<ComensalId>) {
                 if(response.isSuccessful) {
                     println("Comensal creado exitosamente: ${response.body()}")
                     Log.d("API_TEST", "Comensal creado exitosamente: ${response.body()}")
+                    callback(response.body())
                 }else{
+                    callback(null)
                     Log.e("API_TEST", "FAILED")
                 }
             }
@@ -83,6 +86,7 @@ class ComensalVM {
             override fun onFailure(call: Call<ComensalId>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }

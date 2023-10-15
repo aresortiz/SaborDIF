@@ -1,6 +1,7 @@
 package com.example.sabordifapp.viewmodel.APIVM.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.ViewModel
 import com.example.sabordifapp.model.API.condicion.Condicion
 import com.example.sabordifapp.model.API.condicion.CondicionAPI
 import com.example.sabordifapp.model.API.condicion.RegistroCondicion
@@ -11,7 +12,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class CondicionVM {
+class CondicionVM:ViewModel() {
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("http://34.236.3.58:3000/api/condicion/")

@@ -60,7 +60,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:text="Ingresar"
-                    android:textColor="@color/Hueso"
+                    android:textColor="@color/Blanco"
                     android:textSize="20sp" />
 
                 </LinearLayout>

@@ -36,6 +36,8 @@
     <string name="pago_o_donativo">¿PAGO O DONATIVO?</string>
     <string name="donacion_0">Donación: $0</string>
     <string name="finalizar">Finalizar</string>
+    <string name="genero">Género</string>
+    <string name="condicion">Condición</string>
 
     <string-array name="arrIdComedor">
         <item>CLosOlivos</item>

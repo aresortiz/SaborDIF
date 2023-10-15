@@ -1,5 +1,7 @@
 package com.example.sabordifapp.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -59,9 +61,15 @@ class Inicio : Fragment() {
         binding.btnIngresar.setOnClickListener {
             val tipo = binding.idComedor.selectedItem.toString()
             Log.d("Prueba", "boton para pasar a registro ${tipo}")
-            val jijijuju = binding.idComedor.selectedItem
-            val id = mapaComedores.get(jijijuju)?.toInt()
+            val comedorSeleccionado = binding.idComedor.selectedItem
+            val id = mapaComedores.get(comedorSeleccionado)?.toInt()
             val passw = binding.contraC.text.toString()
+
+            val sharedPref = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.putString("IDComedor", id.toString())
+            editor.apply()
+
             if(id != null){
                 val comedor = Responsable(id, passw)
 
@@ -73,7 +81,6 @@ class Inicio : Fragment() {
                     }
                 }
             }
-
         }
     }
 }

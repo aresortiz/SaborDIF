@@ -90,7 +90,8 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="30dp"
                             android:clickable="true"
-                            android:src="@android:drawable/ic_menu_camera" />
+                            android:src="@android:drawable/ic_menu_camera"
+                            app:backgroundTint="@color/Azulin" />
                     </LinearLayout>
 
                 </LinearLayout>

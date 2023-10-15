@@ -89,8 +89,9 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="30dp"
                             android:clickable="true"
+                            android:focusable="true"
                             android:src="@android:drawable/ic_menu_camera"
-                            android:focusable="true" />
+                            app:backgroundTint="@color/Rosita" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -141,7 +142,8 @@
                             android:layout_marginTop="30dp"
                             android:clickable="true"
                             android:focusable="true"
-                            android:src="@android:drawable/ic_menu_camera" />
+                            android:src="@android:drawable/ic_menu_camera"
+                            app:backgroundTint="@color/Rosita" />
                     </LinearLayout>
                 </LinearLayout>
 

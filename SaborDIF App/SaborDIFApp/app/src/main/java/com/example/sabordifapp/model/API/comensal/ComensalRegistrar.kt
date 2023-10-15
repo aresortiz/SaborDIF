@@ -9,3 +9,6 @@ data class ComensalRegistrar(
     @SerializedName("curp") var curp: String,
     @SerializedName("genero") var genero: Int
 )
+//0 = femenino
+//1 = masculino
+//2 = prefiero no decirlo
