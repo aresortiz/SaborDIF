@@ -26,7 +26,7 @@
     <string name="registro_comida">REGISTRO COMIDA</string>
     <string name="id_comensal_asociado">ID Comensal Asociado</string>
     <string name="nombre_id_del_comensal">Nombre o ID del comensal</string>
-    <string name="comida_adicional">¿Desea llevar comida adicional?</string>
+    <string name="comida_adicional">¿Desea llevar comida para alguien?</string>
     <string name="si">Sí</string>
     <string name="no">No</string>
     <string name="registro_comida_adicional">REGISTRO COMIDA ADICIONAL</string>

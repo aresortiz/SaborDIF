@@ -57,6 +57,7 @@ dependencies {
     //Fragmentos
     implementation("androidx.fragment:fragment-ktx:1.6.1")
     //Lector QR
+    implementation("com.google.android.gms:play-services-vision:20.1.3")
     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")

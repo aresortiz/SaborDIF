@@ -17,13 +17,14 @@ import com.example.sabordifapp.model.API.condicion.RegistroCondicion
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComensalVM
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.CondicionVM
 import com.example.sabordifapp.viewmodel.ComensalViewModel
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
 class ComensalView : Fragment() {
 
     //binding
     private lateinit var binding: FragmentComensalBinding
-    private val viewModel:ComensalVM by viewModels()
-    private val viewModel2:CondicionVM by viewModels()
+    private val viewModel: ComensalVM by viewModels()
+    private val viewModel2: CondicionVM by viewModels()
     private var mapaCondiciones: MutableMap<String, Int> = mutableMapOf()
 
     companion object {
@@ -50,47 +51,17 @@ class ComensalView : Fragment() {
                 mapaCondiciones[objetoCondicion.nombreCondicion] = objetoCondicion.IdCondicion
             }
             val listaCondiciones = ArrayList(mapaCondiciones.keys)
-            binding.spnCondicion.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listaCondiciones)
+            binding.spnCondicion.adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                listaCondiciones
+            )
         }
     }
 
-    private fun registrarEventos() {
-
-        binding.btnRegistrar.setOnClickListener {
-            val nombreC = binding.inputNombre.text.toString()
-            val apellidoP = binding.inputApellidoP.text.toString()
-            val apellidoM = binding.inputApellidoM.text.toString()
-            val curp = binding.inputCURP.text.toString()
-            val genero = binding.inputGenero.text.toString()
-            //Si aplica
-            val condicion = binding.spnCondicion.selectedItem.toString()
-            val datosComensal = ComensalRegistrar(nombreC, apellidoP, apellidoM, curp, obtenerGenero(genero))
-            viewModel.registrarNuevoComensal(datosComensal){ comensalId ->
-
-                if(comensalId != null){
-                    //Si se crashea es culpa de esto jiji
-                    val sharedPref = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
-                    val editor = sharedPref.edit()
-                    editor.putString("IDComensal", comensalId.idComensal.toString())
-                    editor.apply()
-                    val idCondicion = mapaCondiciones.get(condicion)?.toInt()
-
-                    if(idCondicion != null){
-
-                        val condicion = CondicionVM()
-                        val listaCondiciones = listOf<RegistroCondicion>(RegistroCondicion(comensalId.idComensal, idCondicion))
-                        condicion.registrarCondicion(listaCondiciones)
-                    }
-                }
-        }
-            val accion = ComensalViewDirections.actionComensalToRegistro()
-            findNavController().navigate(accion)
-        }
-    }
-
-    private fun obtenerGenero(genero: String) : Int {
+    private fun obtenerGenero(genero: String): Int {
         val nGenero = genero.lowercase().filterNot { it.isWhitespace() }
-        val num = when(nGenero) {
+        val num = when (nGenero) {
             "masculino" -> 1
             "femenino" -> 0
             else -> 2
@@ -98,4 +69,73 @@ class ComensalView : Fragment() {
         return num
     }
 
+    private fun registrarEventos() {
+
+        val escanearQR = GmsBarcodeScanning.getClient(requireContext())
+        binding.btnescanearQR.setOnClickListener() {
+            escanearQR.startScan()
+                .addOnSuccessListener { barcode ->
+                    val rawValue: String? = barcode.rawValue
+                    val array = rawValue.toString().split("||")
+                    val curp = array[0]
+                    val array2 = array[1].split("|")
+                    val apellidoP = array2[0]
+                    val apellidoM = array2[1]
+                    val nombreC = array2[2]
+                    val genero = array2[3]
+                    binding.inputCURP.setText(curp)
+                    binding.inputApellidoP.setText(apellidoP)
+                    binding.inputApellidoM.setText(apellidoM)
+                    binding.inputNombre.setText(nombreC)
+                    binding.inputGenero.setText(genero)
+                }.addOnCanceledListener {
+                    //Task cancelled
+                }.addOnFailureListener{e ->
+                    //Task failed with an exception
+                }
+
+            binding.btnRegistrar.setOnClickListener {
+
+                val nombreC = binding.inputNombre.text.toString()
+                val apellidoP = binding.inputApellidoP.text.toString()
+                val apellidoM = binding.inputApellidoM.text.toString()
+                val curp = binding.inputCURP.text.toString()
+                val genero = binding.inputGenero.text.toString()
+                //Si aplica
+                val condicion = binding.spnCondicion.selectedItem.toString()
+                val datosComensal =
+                    ComensalRegistrar(nombreC, apellidoP, apellidoM, curp, obtenerGenero(genero))
+
+                viewModel.registrarNuevoComensal(datosComensal) { comensalId ->
+
+                    if (comensalId != null) {
+                        //Si se crashea es culpa de esto jiji
+                        val sharedPref = requireContext().getSharedPreferences(
+                            "mySharedPrefs",
+                            Context.MODE_PRIVATE
+                        )
+                        val editor = sharedPref.edit()
+                        editor.putString("IDComensal", comensalId.idComensal.toString())
+                        editor.apply()
+                        val idCondicion = mapaCondiciones.get(condicion)
+
+                        if (idCondicion != null) {
+
+                            val condicion = CondicionVM()
+                            val listaCondiciones = listOf<RegistroCondicion>(
+                                RegistroCondicion(
+                                    comensalId.idComensal,
+                                    idCondicion
+                                )
+                            )
+                            condicion.registrarCondicion(listaCondiciones)
+                        }
+                    }
+                }
+                val accion = ComensalViewDirections.actionComensalToRegistro()
+                findNavController().navigate(accion)
+            }
+        }
+
+    }
 }

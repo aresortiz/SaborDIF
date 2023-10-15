@@ -90,14 +90,16 @@ class ComensalVM:ViewModel() {
             }
         })
     }
-    fun registrarDependiente(dependencia: Dependencia){
+    fun registrarDependiente(dependencia: Dependencia, callback: (message?) -> Unit){
         val call = postearAPI.registrarDependiente(dependencia)
         call.enqueue(object : Callback<message> {
             override fun onResponse(call: Call<message>, response: Response<message>) {
                 if(response.isSuccessful) {
                     println("Dependencia creado exitosamente: ${response.body()}")
+                    callback(response.body())
                     Log.d("API_TEST", "Dependencia creado exitosamente: ${response.body()}")
                 }else{
+                    callback(null)
                     Log.e("API_TEST", "FAILED")
                 }
             }
@@ -105,6 +107,7 @@ class ComensalVM:ViewModel() {
             override fun onFailure(call: Call<message>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                callback(null)
             }
         })
     }
