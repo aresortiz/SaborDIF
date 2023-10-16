@@ -39,22 +39,25 @@ class ComidaVM {
             }
         })
     }
-    fun registrarComidaDependiente(comida: ComidaDependiente){
-        val call = postearAPI.registrarComidaDependiente(comida)
-        call.enqueue(object : Callback<message> {
-            override fun onResponse(call: Call<message>, response: Response<message>) {
-                if(response.isSuccessful) {
-                    println("Comida dependiente registrada exitosamente: ${response.body()}")
-                    Log.d("API_TEST", "Comida dependiente registrada exitosamente: ${response.body()}")
-                }else{
-                    Log.e("API_TEST", "FAILED")
+    fun registrarComidaDependiente(listaComidas: List<ComidaDependiente>){
+        for(comida in listaComidas){
+            val call = postearAPI.registrarComidaDependiente(comida)
+            call.enqueue(object : Callback<message> {
+                override fun onResponse(call: Call<message>, response: Response<message>) {
+                    if(response.isSuccessful) {
+                        println("Comida dependiente registrada exitosamente: ${response.body()}")
+                        Log.d("API_TEST", "Comida dependiente registrada exitosamente: ${response.body()}")
+                    }else{
+                        Log.e("API_TEST", "FAILED")
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<message>, t: Throwable) {
-                println("ERROR: ${t.localizedMessage}")
-                Log.e("API_TEST", "FAILED ${t.localizedMessage}")
-            }
-        })
+                override fun onFailure(call: Call<message>, t: Throwable) {
+                    println("ERROR: ${t.localizedMessage}")
+                    Log.e("API_TEST", "FAILED ${t.localizedMessage}")
+                }
+            })
+        }
+
     }
 }

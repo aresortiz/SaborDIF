@@ -1,4 +1,4 @@
-package com.example.sabordifapp
+package com.example.sabordifapp.viewmodel
 
 import androidx.lifecycle.ViewModel
 

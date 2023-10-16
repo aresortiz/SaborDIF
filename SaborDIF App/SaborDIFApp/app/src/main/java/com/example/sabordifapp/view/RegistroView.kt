@@ -57,7 +57,7 @@ class RegistroView : Fragment() {
 
     private fun registrarComida(){
         binding.btnRegistroComida.setOnClickListener {
-            val accion = RegistroViewDirections.actionRegistroToComida()
+            val accion = RegistroViewDirections.actionRegistroToOpcionesComida()
             findNavController().navigate(accion)
         }
     }

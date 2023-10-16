@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_registro_to_comida"
             app:destination="@id/comida" />
+        <action
+            android:id="@+id/action_registro_to_opcionesComida"
+            app:destination="@id/opcionesComida" />
     </fragment>
     <fragment
         android:id="@+id/comensal"
@@ -70,6 +73,15 @@
         <action
             android:id="@+id/action_comida_to_pagoDonativo"
             app:destination="@id/pagoDonativo" />
+        <action
+            android:id="@+id/action_comida_to_opcionesComida"
+            app:destination="@id/opcionesComida" />
+        <action
+            android:id="@+id/action_comida_to_comidaAdicional2"
+            app:destination="@id/comidaAdicional" />
+        <action
+            android:id="@+id/action_comida_to_pagoDonativo2"
+            app:destination="@id/pagoDonativo" />
     </fragment>
     <fragment
         android:id="@+id/comidaAdicional"
@@ -91,11 +103,23 @@
     </fragment>
     <fragment
         android:id="@+id/showqr2"
-        android:name="com.example.sabordifapp.Showqr"
+        android:name="com.example.sabordifapp.view.Showqr"
         android:label="fragment_showqr"
         tools:layout="@layout/fragment_showqr" >
         <action
             android:id="@+id/action_showqr2_to_registro"
             app:destination="@id/registro" />
+    </fragment>
+    <fragment
+        android:id="@+id/opcionesComida"
+        android:name="com.example.sabordifapp.view.OpcionesComida"
+        android:label="fragment_opciones_comida"
+        tools:layout="@layout/fragment_opciones_comida" >
+        <action
+            android:id="@+id/action_opcionesComida_to_comida"
+            app:destination="@id/comida" />
+        <action
+            android:id="@+id/action_opcionesComida_to_comidaAdicional"
+            app:destination="@id/comidaAdicional" />
     </fragment>
 </navigation>

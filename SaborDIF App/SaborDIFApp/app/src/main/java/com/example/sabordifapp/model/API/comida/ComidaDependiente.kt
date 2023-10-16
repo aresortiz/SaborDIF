@@ -7,4 +7,5 @@ data class ComidaDependiente(
     @SerializedName("idDepende") var idDepende: Int,
     @SerializedName("aportacion") var aportacion: Int,
     @SerializedName("paraLlevar") var paraLlevar: Int
+   // var listaDeComidasDependientes: MutableList<ComidaDependiente> = mutableListOf<ComidaDependiente>()
 )
