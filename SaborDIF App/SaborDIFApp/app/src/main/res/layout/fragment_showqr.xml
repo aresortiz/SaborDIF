@@ -36,7 +36,7 @@
                     android:id="@+id/txtcodigoQR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="60dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/codigo_qr"
                     android:textAlignment="center"
@@ -52,14 +52,14 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnRegresar"
-                    android:layout_width="260dp"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="110dp"
                     android:layout_marginBottom="180dp"
                     android:background="@drawable/boton_navy"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="Regresar a registro"
+                    android:text="Regresar a menú registro"
                     android:textColor="@color/Blanco"
                     android:textSize="20sp" />
 

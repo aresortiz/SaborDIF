@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.databinding.FragmentShowqrBinding
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
@@ -44,6 +45,11 @@ class Showqr : Fragment() {
         val idComensal = sharedPrefs.getString("IDComensal", "")
         val qr = generarQR(idComensal.toString())
         binding.qrComensal.setImageBitmap(qr)
+
+        binding.btnRegresar.setOnClickListener{
+            val accion = ShowqrDirections.actionShowqr2ToRegistro()
+            findNavController().navigate(accion)
+        }
     }
 
     private fun generarQR(curp: String) : Bitmap?{

@@ -95,7 +95,7 @@
         android:label="fragment_showqr"
         tools:layout="@layout/fragment_showqr" >
         <action
-            android:id="@+id/action_showqr2_to_comensal"
-            app:destination="@id/comensal" />
+            android:id="@+id/action_showqr2_to_registro"
+            app:destination="@id/registro" />
     </fragment>
 </navigation>

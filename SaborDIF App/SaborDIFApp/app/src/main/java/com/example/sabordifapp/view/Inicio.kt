@@ -3,6 +3,7 @@ package com.example.sabordifapp.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.print.PrintJobInfo
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,11 @@ import com.example.sabordifapp.R
 import com.example.sabordifapp.databinding.FragmentInicioBinding
 import com.example.sabordifapp.model.API.responsable.Responsable
 import com.example.sabordifapp.viewmodel.InicioViewModel
+import com.google.android.gms.common.moduleinstall.InstallStatusListener
+import com.google.android.gms.common.moduleinstall.ModuleInstall
+import com.google.android.gms.common.moduleinstall.ModuleInstallRequest
+import com.google.android.gms.common.moduleinstall.ModuleInstallStatusUpdate
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
 class Inicio : Fragment() {
 
@@ -36,6 +42,8 @@ class Inicio : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         registrarEventos()
         registrarObservables()
+        verificarQR()
+        instalarModulo()
     }
 
     private fun registrarObservables()
@@ -83,4 +91,78 @@ class Inicio : Fragment() {
             }
         }
     }
+
+    private fun verificarQR()
+    {
+
+        val moduleInstallClient = ModuleInstall.getClient(requireContext())
+        val optionalModuleApi = GmsBarcodeScanning.getClient(requireContext())
+
+        moduleInstallClient
+            .areModulesAvailable(optionalModuleApi)
+            .addOnSuccessListener {
+                if (it.areModulesAvailable()) {
+                    println("<Si está instalado")
+                    //escanearQR()
+                } else {
+                    println("No está instalado")
+                    instalarModulo()
+                }
+            }
+            .addOnFailureListener {
+                println("Error al verificar módulo")
+            }
+
+    }
+
+    private fun instalarModulo() {
+        val moduleInstallClient = ModuleInstall.getClient(requireContext())
+        val optionalModuleApi = GmsBarcodeScanning.getClient(requireContext())
+
+        val moduleInstallRequest =
+            ModuleInstallRequest.newBuilder()
+                .addApi(optionalModuleApi)
+                .setListener(listener)
+                .build()
+
+        moduleInstallClient
+            .installModules(moduleInstallRequest)
+            .addOnSuccessListener {
+                if (it.areModulesAlreadyInstalled()) {
+                    // Modules are already installed when the request is sent.
+                    println("I N S T A L A N D O ......")
+                }
+            }
+            .addOnFailureListener {
+                println("NO SE PUEDE INSTALAR")
+
+            }
+    }
+
+    inner class ModuleInstallProgressListener : InstallStatusListener {
+        override fun onInstallStatusUpdated(update: ModuleInstallStatusUpdate) {
+            // Progress info is only set when modules are in the progress of downloading.
+            update.progressInfo?.let {
+                val progress = (it.bytesDownloaded * 100 / it.totalBytesToDownload).toInt()
+                // Set the progress for the progress bar.
+                //progressBar.setProgress(progress)
+                println(progress)
+                if(progress == 100)
+                {
+                    Log.d("API_TEST", "Modulo Instalado")
+
+                }
+            }
+
+            if (isTerminateState(update.installState)) {
+                //moduleInstallClient.unregisterListener(this)
+            }
+        }
+
+        fun isTerminateState(@ModuleInstallStatusUpdate.InstallState state: Int): Boolean {
+            return state == PrintJobInfo.STATE_CANCELED || state == PrintJobInfo.STATE_COMPLETED || state == PrintJobInfo.STATE_FAILED
+        }
+    }
+
+    val listener = ModuleInstallProgressListener()
 }

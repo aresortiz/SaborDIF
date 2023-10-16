@@ -90,7 +90,7 @@ class ComensalView : Fragment() {
 
     private fun registrarEventos() {
 
-        verificarQR()
+        //verificarQR()
         escanearQR()
 
             binding.btnRegistrar.setOnClickListener {
@@ -181,79 +181,7 @@ class ComensalView : Fragment() {
 
     }
 
-    private fun verificarQR()
-    {
 
-        val moduleInstallClient = ModuleInstall.getClient(requireContext())
-        val optionalModuleApi = GmsBarcodeScanning.getClient(requireContext())
-
-        moduleInstallClient
-            .areModulesAvailable(optionalModuleApi)
-            .addOnSuccessListener {
-                if (it.areModulesAvailable()) {
-                    println("<Si está instalado")
-                    escanearQR()
-                } else {
-                    println("No está instalado")
-                    instalarModulo()
-                }
-            }
-            .addOnFailureListener {
-                println("Error al verificar módulo")
-            }
-
-    }
-
-    private fun instalarModulo() {
-        val moduleInstallClient = ModuleInstall.getClient(requireContext())
-        val optionalModuleApi = GmsBarcodeScanning.getClient(requireContext())
-
-        val moduleInstallRequest =
-            ModuleInstallRequest.newBuilder()
-                .addApi(optionalModuleApi)
-                .setListener(listener)
-                .build()
-
-        moduleInstallClient
-            .installModules(moduleInstallRequest)
-            .addOnSuccessListener {
-                if (it.areModulesAlreadyInstalled()) {
-                    // Modules are already installed when the request is sent.
-                    println("I N S T A L A N D O ......")
-                }
-            }
-            .addOnFailureListener {
-                println("NO SE PUEDE INSTALAR")
-
-            }
-    }
-
-    inner class ModuleInstallProgressListener : InstallStatusListener {
-        override fun onInstallStatusUpdated(update: ModuleInstallStatusUpdate) {
-            // Progress info is only set when modules are in the progress of downloading.
-            update.progressInfo?.let {
-                val progress = (it.bytesDownloaded * 100 / it.totalBytesToDownload).toInt()
-                // Set the progress for the progress bar.
-                //progressBar.setProgress(progress)
-                println(progress)
-                if(progress == 100)
-                {
-                    Log.d("API_TEST", "Modulo Instalado")
-
-                }
-            }
-
-            if (isTerminateState(update.installState)) {
-                //moduleInstallClient.unregisterListener(this)
-            }
-        }
-
-        fun isTerminateState(@ModuleInstallStatusUpdate.InstallState state: Int): Boolean {
-            return state == STATE_CANCELED || state == STATE_COMPLETED || state == STATE_FAILED
-        }
-    }
-
-    val listener = ModuleInstallProgressListener()
 
 
 }

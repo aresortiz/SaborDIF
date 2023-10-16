@@ -16,6 +16,7 @@ import com.example.sabordifapp.model.API.comensal.Dependencia
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComensalVM
 import com.example.sabordifapp.viewmodel.ComensalViewModel
 import com.example.sabordifapp.viewmodel.DependienteViewModel
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
 class Dependiente : Fragment() {
 
@@ -41,6 +42,10 @@ class Dependiente : Fragment() {
     }
 
     private fun registrarEventos() {
+
+        escanearQRDependiente()
+        escanearQRComensalAsociado()
+
         binding.btnRegistrarDependiente.setOnClickListener {
             val idDependiente = binding.inputIDDependiente.text.toString().toInt()
             val idComensalAsociado = binding.inputIDComensal.text.toString().toInt()
@@ -54,6 +59,42 @@ class Dependiente : Fragment() {
                 }
             }
         }
+    }
+
+    private fun escanearQRDependiente()
+    {
+        val qrDependiente = GmsBarcodeScanning.getClient(requireContext())
+        binding.escanearQRDependiente.setOnClickListener(){
+            qrDependiente.startScan()
+                .addOnSuccessListener { idDQR ->
+                    val rawValue: String? = idDQR.rawValue
+                    val valorIDD = rawValue.toString()
+                    val idDependienteQR = valorIDD
+                    Log.d("API_TEST", "Este es el raw value ${rawValue}")
+                    binding.inputIDDependiente.setText(idDependienteQR)
+
+                }.addOnCanceledListener {
+                    //Task cancelled
+                }.addOnFailureListener{ e->
+                    //Task failed with an exception
+                }
+        }
+    }
+
+    private fun escanearQRComensalAsociado()
+    {
+        val qrComensalAsociado = GmsBarcodeScanning.getClient(requireContext())
+        binding .escanearQRcomensalAsociado.setOnClickListener(){
+            qrComensalAsociado.startScan()
+                .addOnSuccessListener { idCQR ->
+                    val rawValue: String? = idCQR.rawValue
+                    val valorIDC = rawValue.toString()
+                    val idComensalAsociado = valorIDC
+                    Log.d("API_TEST", "Este el es raw value 2 ${rawValue}")
+                    binding.inputIDComensal.setText(idComensalAsociado)
+                }
+        }
+
     }
 
 }
