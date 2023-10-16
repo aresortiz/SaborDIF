@@ -1,6 +1,8 @@
 package com.example.sabordifapp.view
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.print.PrintJobInfo.STATE_CANCELED
 import android.print.PrintJobInfo.STATE_COMPLETED
@@ -11,28 +13,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.sabordifapp.R
+import com.example.sabordifapp.ShowqrViewModel
 import com.example.sabordifapp.databinding.FragmentComensalBinding
+import com.example.sabordifapp.databinding.FragmentRegistroBinding
+import com.example.sabordifapp.databinding.FragmentShowqrBinding
 import com.example.sabordifapp.model.API.comensal.ComensalRegistrar
-import com.example.sabordifapp.model.API.condicion.Condicion
 import com.example.sabordifapp.model.API.condicion.RegistroCondicion
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComensalVM
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.CondicionVM
-import com.example.sabordifapp.viewmodel.ComensalViewModel
 import com.google.android.gms.common.moduleinstall.InstallStatusListener
 import com.google.android.gms.common.moduleinstall.ModuleInstall
 import com.google.android.gms.common.moduleinstall.ModuleInstallRequest
 import com.google.android.gms.common.moduleinstall.ModuleInstallStatusUpdate
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.WriterException
+import com.google.zxing.common.BitMatrix
+import com.google.zxing.qrcode.QRCodeWriter
 
 class ComensalView : Fragment() {
 
     //binding
     private lateinit var binding: FragmentComensalBinding
+    private lateinit var binding2: FragmentShowqrBinding
     private val viewModel: ComensalVM by viewModels()
     private val viewModel2: CondicionVM by viewModels()
+    //private val viewModel3: ShowqrViewModel by viewModels()
     private var mapaCondiciones: MutableMap<String, Int> = mutableMapOf()
 
     companion object {
@@ -46,7 +56,6 @@ class ComensalView : Fragment() {
         binding = FragmentComensalBinding.inflate(layoutInflater)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,13 +109,7 @@ class ComensalView : Fragment() {
 
                     if (comensalId != null) {
                         //Si se crashea es culpa de esto jiji
-                        val sharedPref = requireContext().getSharedPreferences(
-                            "mySharedPrefs",
-                            Context.MODE_PRIVATE
-                        )
-                        val editor = sharedPref.edit()
-                        editor.putString("IDComensal", comensalId.idComensal.toString())
-                        editor.apply()
+
                         if(condicion != "Ninguna/No aplica"){
                             val idCondicion = mapaCondiciones.get(condicion)
 
@@ -123,13 +126,31 @@ class ComensalView : Fragment() {
                             }
 
                         }
-
+                        registrarObservables(comensalId.idComensal)
                     }
                 }
-                val accion = ComensalViewDirections.actionComensalToRegistro()
-                findNavController().navigate(accion)
+                //val accion = ComensalViewDirections.actionComensalToRegistro()
+                //findNavController().navigate(accion)
             }
         }
+
+    private fun registrarObservables(idComensal:Int){
+        val sharedPref = requireContext().getSharedPreferences(
+            "mySharedPrefs",
+            Context.MODE_PRIVATE
+        )
+
+        //val idComensal = sharedPref.getString("IDComensal", "")
+
+        viewModel.idComensal2.observe(viewLifecycleOwner){ valor ->
+            val editor = sharedPref.edit()
+            editor.putString("IDComensal", idComensal.toString())
+            editor.apply()
+
+            val accionQR = ComensalViewDirections.actionComensalToShowqr2()
+            findNavController().navigate(accionQR)
+        }
+    }
 
     private fun escanearQR()
     {
@@ -233,7 +254,6 @@ class ComensalView : Fragment() {
     }
 
     val listener = ModuleInstallProgressListener()
-
 
 
 }

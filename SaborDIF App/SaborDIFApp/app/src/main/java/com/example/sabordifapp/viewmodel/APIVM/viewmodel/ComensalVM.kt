@@ -1,6 +1,7 @@
 package com.example.sabordifapp.viewmodel.APIVM.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.sabordifapp.model.API.comensal.Comensal
 import com.example.sabordifapp.model.API.comensal.ComensalAPI
@@ -15,6 +16,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ComensalVM:ViewModel() {
+
+    val idComensal2 = MutableLiveData<Int>()
 
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -76,6 +79,7 @@ class ComensalVM:ViewModel() {
                 if(response.isSuccessful) {
                     println("Comensal creado exitosamente: ${response.body()}")
                     Log.d("API_TEST", "Comensal creado exitosamente: ${response.body()}")
+                    idComensal2.value = response.body()?.idComensal
                     callback(response.body())
                 }else{
                     callback(null)

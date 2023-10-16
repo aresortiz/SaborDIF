@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_comensal_to_registro"
             app:destination="@id/registro" />
+        <action
+            android:id="@+id/action_comensal_to_showqr2"
+            app:destination="@id/showqr2" />
     </fragment>
     <fragment
         android:id="@+id/bienvenida"
@@ -85,5 +88,14 @@
         <action
             android:id="@+id/action_pagoDonativo_to_registro"
             app:destination="@id/registro" />
+    </fragment>
+    <fragment
+        android:id="@+id/showqr2"
+        android:name="com.example.sabordifapp.Showqr"
+        android:label="fragment_showqr"
+        tools:layout="@layout/fragment_showqr" >
+        <action
+            android:id="@+id/action_showqr2_to_comensal"
+            app:destination="@id/comensal" />
     </fragment>
 </navigation>

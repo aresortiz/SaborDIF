@@ -59,6 +59,8 @@ dependencies {
     //Lector QR
     implementation("com.google.android.gms:play-services-vision:20.1.3")
     implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
+    //Generar QR
+    implementation ("com.google.zxing:core:3.4.1")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
