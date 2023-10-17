@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="background">@color/Lila</item>
+    </style>
+</resources>

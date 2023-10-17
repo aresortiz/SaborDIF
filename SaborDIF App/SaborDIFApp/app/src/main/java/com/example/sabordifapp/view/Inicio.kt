@@ -1,5 +1,6 @@
 package com.example.sabordifapp.view
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -86,6 +87,14 @@ class Inicio : Fragment() {
                     if(loginValido?.access == 1){
                         val accion = InicioDirections.actionInicioToRegistro()
                         findNavController().navigate(accion)
+                    }else{
+                        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
+                        builder.setTitle("Inicio de sesión inválido")
+                            .setMessage("La contraseña ingresada es incorrecta, por favor ingrésela nuevamente")
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .show()
                     }
                 }
             }

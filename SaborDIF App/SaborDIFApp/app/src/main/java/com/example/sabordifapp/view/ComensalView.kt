@@ -1,6 +1,8 @@
 package com.example.sabordifapp.view
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.sabordifapp.R
 import com.example.sabordifapp.databinding.FragmentComensalBinding
 import com.example.sabordifapp.databinding.FragmentShowqrBinding
 import com.example.sabordifapp.model.API.comensal.ComensalRegistrar
@@ -42,7 +45,7 @@ class ComensalView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registrarEventos()
+        validarCampos()
         condiciones()
     }
 
@@ -71,7 +74,7 @@ class ComensalView : Fragment() {
         return num
     }
 
-    private fun registrarEventos() {
+    private fun validarCampos() {
 
         //verificarQR()
         escanearQR()
@@ -83,10 +86,21 @@ class ComensalView : Fragment() {
                 val apellidoM = binding.inputApellidoM.text.toString()
                 val curp = binding.inputCURP.text.toString()
                 val genero = binding.inputGenero.text.toString()
-                //Si aplica
+
+                if(nombreC.isEmpty() || apellidoP.isEmpty() || apellidoM.isEmpty() || curp.isEmpty()){
+                    val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
+                    builder.setTitle("Error")
+                        .setMessage("Por favor llene todos los campos")
+                        .setPositiveButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+
                 val condicion = binding.spnCondicion.selectedItem.toString()
                 val datosComensal =
                     ComensalRegistrar(nombreC, apellidoP, apellidoM, curp, obtenerGenero(genero))
+
 
                 viewModel.registrarNuevoComensal(datosComensal) { comensalId ->
 
@@ -162,6 +176,27 @@ class ComensalView : Fragment() {
                 }
         }
 
+    }
+
+    private fun mensajeError(error: String){
+        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
+        builder.setTitle("Error")
+            .setMessage(error)
+            .setPositiveButton("OK"){ dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun mensajeExitoso(exito: String){
+        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
+        builder.setTitle("Acción exitosa")
+            .setMessage(exito)
+            .setPositiveButton("OK"){ dialog, _ ->
+                dialog.dismiss()
+                findNavController().navigateUp()
+            }
+            .show()
     }
 
 }
