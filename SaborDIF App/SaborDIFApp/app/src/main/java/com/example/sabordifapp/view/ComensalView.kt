@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -40,6 +41,18 @@ class ComensalView : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentComensalBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.txtRegisComensal.startAnimation(slideInAnimationLeft)
+        binding.nombreComensal.startAnimation(slideInAnimatioRight)
+        binding.inputApellidoP.startAnimation(slideInAnimationLeft)
+        binding.inputApellidoM.startAnimation(slideInAnimatioRight)
+        binding.inputGenero.startAnimation(slideInAnimationLeft)
+        binding.inputCURP.startAnimation(slideInAnimatioRight)
+        binding.spnCondicion.startAnimation(slideInAnimationLeft)
+        binding.btnRegistrar.startAnimation(slideInAnimatioRight)
+        binding.btnescanearQR.startAnimation(slideInAnimationLeft)
+        binding.textView3.startAnimation(slideInAnimatioRight)
         return binding.root
     }
 
