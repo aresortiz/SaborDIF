@@ -87,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:background="@drawable/boton_azulito"
+                        android:background="@drawable/boton_verdecin"
                         android:clickable="false"
                         android:focusable="false"
                         android:fontFamily="@font/poppins_medium"
@@ -135,33 +135,35 @@
                     android:textSize="19sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="340dp"
+                    android:layout_height="65dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="45dp"
+                    android:layout_marginTop="75dp"
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/btnComunicar"
-                        android:layout_width="65dp"
-                        android:layout_height="70dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="130dp"
-                        android:src="@drawable/livechat"
-                        app:civ_border_width="0dp" />
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnContactarDIF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="140dp"
+                        android:backgroundTint="@color/Azulin"
+                        android:clickable="true"
+                        android:src="@android:drawable/stat_sys_phone_call" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/btnHorario"
-                        android:layout_width="55dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="0dp"
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/btnNotificarCierre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:src="@drawable/time"
-                        app:civ_border_width="0dp" />
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/Azulin"
+                        android:clickable="true"
+                        android:src="@android:drawable/ic_popup_reminder" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

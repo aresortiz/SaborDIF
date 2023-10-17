@@ -2,6 +2,8 @@ package com.example.sabordifapp.view
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -41,6 +43,8 @@ class RegistroView : Fragment() {
         registrarDependiente()
         registrarComida()
         descargarRegistroDeComidasVendidas()
+        contactarDIF()
+
     }
 
     private fun descargarRegistroDeComidasVendidas() {
@@ -78,6 +82,21 @@ class RegistroView : Fragment() {
         binding.btnRegistroComida.setOnClickListener {
             val accion = RegistroViewDirections.actionRegistroToOpcionesComida()
             findNavController().navigate(accion)
+        }
+    }
+
+    private fun contactarDIF(){
+        binding .btnContactarDIF.setOnClickListener{
+            Log.d("API_TEST", "Boton presionado")
+            val numeroTelefonico = "5528178518"
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:$numeroTelefonico")
+
+            if(intent.resolveActivity(requireContext().packageManager) != null){
+                startActivity(intent)
+            }else{
+                //Handle exception
+            }
         }
     }
 
