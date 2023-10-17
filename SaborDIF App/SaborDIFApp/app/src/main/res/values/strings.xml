@@ -17,7 +17,7 @@
     <string name="apellido_paterno">Apellido paterno</string>
     <string name="apellido_materno">Apellido materno</string>
     <string name="curp">CURP</string>
-    <string name="escanear_qr">Escanear QR</string>
+    <string name="escanear_qr">Escanear QR CURP</string>
     <string name="registrar">Registrar</string>
     <string name="credenciales">Por favor ingrese sus credenciales:</string>
     <string name="acceder">Acceder</string>

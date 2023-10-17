@@ -164,7 +164,4 @@ class ComensalView : Fragment() {
 
     }
 
-
-
-
 }
