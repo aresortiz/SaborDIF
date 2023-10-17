@@ -55,7 +55,8 @@
                         android:layout_marginTop="45dp"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/nombre" />
+                        android:hint="@string/nombre"
+                        android:inputType="textCapCharacters"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -70,7 +71,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/apellido_paterno"
                         android:background="@drawable/boton_hueso"
-                        android:fontFamily="@font/poppins"/>
+                        android:fontFamily="@font/poppins"
+                        android:inputType="textCapCharacters"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -85,7 +87,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/apellido_materno" />
+                        android:hint="@string/apellido_materno"
+                        android:inputType="textCapCharacters"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -101,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/genero" />
+                        android:hint="@string/genero"
+                        android:inputType="textCapCharacters"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +120,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/boton_hueso"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/curp" />
+                        android:hint="@string/curp"
+                        android:inputType="textCapCharacters"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

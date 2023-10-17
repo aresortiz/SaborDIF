@@ -73,6 +73,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/boton_hueso"
                                 android:fontFamily="@font/poppins"
+                                android:inputType="number"
                                 android:hint="@string/id_dependiente" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -125,6 +126,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/boton_hueso"
                                 android:fontFamily="@font/poppins"
+                                android:inputType="number"
                                 android:hint="@string/id_comensal_asociado" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
