@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.R
@@ -34,6 +35,18 @@ class RegistroView : Fragment() {
     ): View? {
 
         binding = FragmentRegistroBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.btnRegistroComensal.startAnimation(slideInAnimationLeft)
+        binding.btnRegistroDependiente.startAnimation(slideInAnimationLeft)
+        binding.btnRegistroComida.startAnimation(slideInAnimationLeft)
+
+        binding.btnContactarDIF.startAnimation(slideInAnimatioRight)
+        binding.btnNotificarCierre.startAnimation(slideInAnimatioRight)
+        binding.txtDonadas.startAnimation(slideInAnimatioRight)
+        binding.txtVendidas.startAnimation(slideInAnimatioRight)
+        binding.contDonadas.startAnimation(slideInAnimatioRight)
+        binding.contVendidas.startAnimation(slideInAnimatioRight)
         return binding.root
     }
 

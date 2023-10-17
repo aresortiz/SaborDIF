@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -46,6 +47,16 @@ class ComidaAdicional : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentComidaAdicionalBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.txtRegisComidaAdicional.startAnimation(slideInAnimationLeft)
+        binding.imagComidaAdicional.startAnimation(slideInAnimatioRight)
+        binding.txtNombreComensalComidaAdicional.startAnimation(slideInAnimationLeft)
+        binding.linearLayoutDependiente.startAnimation(slideInAnimationLeft)
+        binding.linearLayoutComensalAsociadoComida.startAnimation(slideInAnimatioRight)
+        binding.linearLayoutSpnComida.startAnimation(slideInAnimationLeft)
+        binding.btnAgregarAsociadoComida.startAnimation(slideInAnimationLeft)
+        binding.btnIrPago.startAnimation(slideInAnimatioRight)
         return binding.root
     }
 

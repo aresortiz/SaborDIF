@@ -1,5 +1,7 @@
 package com.example.sabordifapp.view
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,7 +12,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.R
@@ -35,6 +39,8 @@ class Inicio : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInicioBinding.inflate(layoutInflater)
+        val slideInAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        binding.linearLayoutInicioSesion.startAnimation(slideInAnimation)
         return binding.root
     }
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -31,6 +32,12 @@ class PagoDonativo : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPagoDonativoBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.txtPagoDonativo.startAnimation(slideInAnimationLeft)
+        binding.imagPagoDonativo.startAnimation(slideInAnimatioRight)
+        binding.textView2.startAnimation(slideInAnimationLeft)
+        binding.btnFinalizar.startAnimation(slideInAnimatioRight)
         return binding.root
     }
 

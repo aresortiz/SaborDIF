@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.viewmodel.OpcionesComidaViewModel
@@ -25,6 +26,12 @@ class OpcionesComida : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOpcionesComidaBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.txtRegisComida.startAnimation(slideInAnimationLeft)
+        binding.imagComida.startAnimation(slideInAnimatioRight)
+        binding.btnComidaComensal.startAnimation(slideInAnimationLeft)
+        binding.btnComidaDependiente.startAnimation(slideInAnimatioRight)
         return binding.root
     }
 
