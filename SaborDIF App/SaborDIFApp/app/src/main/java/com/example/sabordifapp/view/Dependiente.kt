@@ -2,6 +2,8 @@ package com.example.sabordifapp.view
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +25,8 @@ class Dependiente : Fragment() {
     //binding
     private lateinit var binding: FragmentDependienteBinding
     private val viewModel: ComensalVM by viewModels()
+    private val comensalVm: ComensalVM = ComensalVM()
+    private var mapaComensal: MutableMap<Int, String> = mutableMapOf()
 
     companion object {
         fun newInstance() = Dependiente()
@@ -34,10 +38,70 @@ class Dependiente : Fragment() {
     ): View? {
         binding = FragmentDependienteBinding.inflate(layoutInflater)
         return binding.root
+
+    }
+
+    private fun escucharModificaciones() {
+        val inputDependiente = binding.inputIDDependiente
+        inputDependiente.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // This method is called before the text is changed.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // This method is called during the text change.
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+                // This method is called after the text is changed.
+                val text = s.toString()
+                if(s != null && text.isNotEmpty()){
+                    val idVal = text.toInt()
+                    val nombre = mapaComensal[idVal]
+                    var newText = ""
+                    newText = if(nombre != null){
+                        "Comensal : $nombre"
+                    }else{
+                        "No hay un Comensal con ese ID"
+                    }
+                    binding.txtDependienteDependiente.text = newText
+                }
+
+                // Perform your operation here with the modified text
+            }
+        })
+        val inputComensalAsociado = binding.inputIDComensal
+        inputComensalAsociado.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // This method is called before the text is changed.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // This method is called during the text change.
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // This method is called after the text is changed.
+                val text = s.toString()
+                if(s != null && text.isNotEmpty()){
+                    val idVal = text.toInt()
+                    val nombre = mapaComensal[idVal]
+                    var newText = ""
+                    newText = if(nombre != null){
+                        "Comensal Asociado: $nombre"
+                    }else{
+                        "No hay un Comensal Asociado con ese ID"
+                    }
+                    binding.txtComensalAsociadoDependiente.text = newText
+                }
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        escucharModificaciones()
         registrarEventos()
     }
 
@@ -45,6 +109,7 @@ class Dependiente : Fragment() {
 
         escanearQRDependiente()
         escanearQRComensalAsociado()
+        obtenerComensales()
 
         binding.btnRegistrarDependiente.setOnClickListener {
             val idDependiente = binding.inputIDDependiente.text.toString().toInt()
@@ -56,6 +121,16 @@ class Dependiente : Fragment() {
                 if(mensaje != null){
                     val accion = DependienteDirections.actionDependienteToRegistro()
                     findNavController().navigate(accion)
+                }
+            }
+        }
+    }
+
+    private fun obtenerComensales() {
+        comensalVm.descargarComensales { comensales ->
+            if(comensales != null){
+                for(comensal in comensales){
+                    mapaComensal[comensal.IdComensal] = "${comensal.nombres} ${comensal.apellidoPaterno} ${comensal.apellidoMatenro}"
                 }
             }
         }

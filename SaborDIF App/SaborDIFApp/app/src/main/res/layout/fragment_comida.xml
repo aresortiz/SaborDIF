@@ -50,6 +50,14 @@
                     android:layout_marginTop="10dp"
                     android:src="@drawable/restaurant" />
 
+                <TextView
+                    android:id="@+id/txtComensalComida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Comensal: "
+                    tools:text="Comensal: Rosita Fresita" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -74,7 +82,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/boton_hueso"
                                 android:fontFamily="@font/poppins"
-                                android:hint="ID del Comensal" />
+                                android:hint="ID del Comensal"
+                                android:inputType="number" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -94,6 +103,26 @@
                             app:backgroundTint="@color/Azulin" />
                     </LinearLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spnPagoComidaComensal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/PagoDonacion"/>
+
+                    <Spinner
+                        android:id="@+id/spnParaLlevarComidaComensal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/ParaLlevar"/>
                 </LinearLayout>
 
                 <TextView

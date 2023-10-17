@@ -78,10 +78,18 @@
             app:destination="@id/opcionesComida" />
         <action
             android:id="@+id/action_comida_to_comidaAdicional2"
-            app:destination="@id/comidaAdicional" />
+            app:destination="@id/comidaAdicional" >
+            <argument
+                android:name="totalPorPagar"
+                android:defaultValue="0" />
+        </action>
         <action
             android:id="@+id/action_comida_to_pagoDonativo2"
-            app:destination="@id/pagoDonativo" />
+            app:destination="@id/pagoDonativo" >
+            <argument
+                android:name="totalPorPagar"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/comidaAdicional"
@@ -95,6 +103,9 @@
                 android:name="totalPorPagar"
                 android:defaultValue="0" />
         </action>
+        <argument
+            android:name="totalPorPagar"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/pagoDonativo"
@@ -128,6 +139,10 @@
             app:destination="@id/comida" />
         <action
             android:id="@+id/action_opcionesComida_to_comidaAdicional"
-            app:destination="@id/comidaAdicional" />
+            app:destination="@id/comidaAdicional" >
+            <argument
+                android:name="totalPorPagar"
+                android:defaultValue="0" />
+        </action>
     </fragment>
 </navigation>
