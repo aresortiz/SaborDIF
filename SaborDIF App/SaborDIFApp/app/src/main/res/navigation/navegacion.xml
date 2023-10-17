@@ -90,7 +90,11 @@
         tools:layout="@layout/fragment_comida_adicional" >
         <action
             android:id="@+id/action_comidaAdicional_to_pagoDonativo"
-            app:destination="@id/pagoDonativo" />
+            app:destination="@id/pagoDonativo" >
+            <argument
+                android:name="totalPorPagar"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/pagoDonativo"
@@ -100,6 +104,10 @@
         <action
             android:id="@+id/action_pagoDonativo_to_registro"
             app:destination="@id/registro" />
+        <argument
+            android:name="totalPorPagar"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/showqr2"

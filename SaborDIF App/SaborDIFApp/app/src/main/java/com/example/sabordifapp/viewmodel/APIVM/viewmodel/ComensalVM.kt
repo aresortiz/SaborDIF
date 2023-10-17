@@ -56,7 +56,7 @@ class ComensalVM:ViewModel() {
                 if(response.isSuccessful){
                     println("Lista de dependientes: ${response.body()}")
                     Log.d("API_TEST", "Lista de dependientes: ${response.body()}")
-
+                    callback(response.body())
                 }else{
                     Log.e("API_TEST", "FAILED")
                     callback(null)

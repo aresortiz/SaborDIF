@@ -1,5 +1,7 @@
 package com.example.sabordifapp.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.sabordifapp.R
 import com.example.sabordifapp.databinding.FragmentRegistroBinding
+import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComedorVM
 import com.example.sabordifapp.viewmodel.RegistroViewModel
 
 class RegistroView : Fragment() {
@@ -19,6 +22,7 @@ class RegistroView : Fragment() {
     //binding
     private lateinit var binding: FragmentRegistroBinding
     private val viewModel:RegistroViewModel by viewModels()
+    val comedorVm: ComedorVM = ComedorVM()
 
     companion object {
         fun newInstance() = RegistroView()
@@ -38,7 +42,23 @@ class RegistroView : Fragment() {
         registrarComensal()
         registrarDependiente()
         registrarComida()
+        descargarRegistroDeComidasVendidas()
         contactarDIF()
+
+    }
+
+    private fun descargarRegistroDeComidasVendidas() {
+        val prefs: SharedPreferences = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
+        val defaultValue = "0"
+        val idComedor = prefs.getString("IDComedor", defaultValue)?.toInt()
+        if(idComedor != null){
+            comedorVm.descargarVendidasDonadas(idComedor){comidasVendidas ->
+                if(comidasVendidas != null){
+                    binding.contVendidas.setText(comidasVendidas.totalComidasVendidas.toString())
+                    binding.contDonadas.setText(comidasVendidas.totalComidasDonadas.toString())
+                }
+            }
+        }
     }
 
     private fun registrarComensal(){

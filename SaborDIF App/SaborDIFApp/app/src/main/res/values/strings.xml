@@ -79,5 +79,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="codigo_qr">Este es su código QR:</string>
+    <string name="buscar_dependencias">Buscar dependencias</string>
+    <string-array name="PagoDonacion">
+        <item>Pago: $13</item>
+        <item>Donación: $0</item>
+    </string-array>
+    <string-array name="ParaLlevar">
+        <item>Comer aquí</item>
+        <item>Para llevar</item>
+    </string-array>
 
 </resources>
