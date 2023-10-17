@@ -82,7 +82,7 @@ class Comida : Fragment() {
                     newText = if(nombre != null){
                         "Comensal : $nombre"
                     }else{
-                        "No hay un Comensal con ese ID"
+                        "No hay un comensal con ese ID"
                     }
                     binding.txtComensalComida.text = newText
                 }

@@ -10,10 +10,10 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,11 @@
                     android:id="@+id/txtNombreComensalComidaAdicional"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
+                    android:textSize="19sp"
+                    android:textColor="@color/Navy"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/poppins_semibold"
                     android:text="Comensal: "
                     tools:text="Comensal: Ares Ortiz Botello" />
 
@@ -66,7 +70,6 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
-                        android:layout_marginTop="20dp"
 
                         android:orientation="vertical">
 
@@ -77,9 +80,9 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/inputDependienteComida"
-                                android:layout_width="300dp"
+                                android:layout_width="318dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/boton_azulito"
+                                android:background="@drawable/boton_hueso"
                                 android:fontFamily="@font/poppins"
                                 android:hint="@string/id_dependiente"
                                 android:inputType="number" />
@@ -96,18 +99,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="25dp"
+                            android:layout_marginTop="8dp"
                             android:clickable="true"
                             android:focusable="true"
+                            android:layout_marginStart="3dp"
                             android:src="@android:drawable/ic_menu_camera"
-                            app:backgroundTint="@color/AzulClaro" />
+                            app:backgroundTint="@color/Azulin" />
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:orientation="horizontal">
 
                     <Spinner
@@ -121,11 +125,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/boton_lila"
+                        android:background="@drawable/boton_azulfuertecito"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/buscar_dependencias"
-                        android:textColor="@color/Navy"
-                        android:textSize="10sp" />
+                        android:textColor="@color/Hueso"
+                        android:textSize="13sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -161,11 +165,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
                         android:layout_marginRight="30dp"
-                        android:layout_marginBottom="40dp"
-                        android:background="@drawable/boton_azulclaro"
+                        android:layout_marginBottom="50dp"
+                        android:background="@drawable/boton_navy"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Agregar comida"
-                        android:textColor="@color/Navy"
+                        android:textColor="@color/Hueso"
                         android:textSize="15sp" />
 
                     <androidx.appcompat.widget.AppCompatButton

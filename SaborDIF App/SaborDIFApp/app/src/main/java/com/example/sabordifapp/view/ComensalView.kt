@@ -101,33 +101,33 @@ class ComensalView : Fragment() {
                 val datosComensal =
                     ComensalRegistrar(nombreC, apellidoP, apellidoM, curp, obtenerGenero(genero))
 
+                if(nombreC.isNotEmpty() || apellidoP.isNotEmpty() || apellidoM.isNotEmpty() || curp.isNotEmpty()){
+                    viewModel.registrarNuevoComensal(datosComensal) { comensalId ->
 
-                viewModel.registrarNuevoComensal(datosComensal) { comensalId ->
+                        if (comensalId != null) {
+                            //Si se crashea es culpa de esto jiji
 
-                    if (comensalId != null) {
-                        //Si se crashea es culpa de esto jiji
+                            if(condicion != "Ninguna/No aplica"){
+                                val idCondicion = mapaCondiciones.get(condicion)
 
-                        if(condicion != "Ninguna/No aplica"){
-                            val idCondicion = mapaCondiciones.get(condicion)
+                                if (idCondicion != null) {
 
-                            if (idCondicion != null) {
-
-                                val condicion = CondicionVM()
-                                val listaCondiciones = listOf<RegistroCondicion>(
-                                    RegistroCondicion(
-                                        comensalId.idComensal,
-                                        idCondicion
+                                    val condicion = CondicionVM()
+                                    val listaCondiciones = listOf<RegistroCondicion>(
+                                        RegistroCondicion(
+                                            comensalId.idComensal,
+                                            idCondicion
+                                        )
                                     )
-                                )
-                                condicion.registrarCondicion(listaCondiciones)
-                            }
+                                    condicion.registrarCondicion(listaCondiciones)
+                                }
 
+                            }
+                            registrarObservables(comensalId.idComensal)
                         }
-                        registrarObservables(comensalId.idComensal)
                     }
+
                 }
-                //val accion = ComensalViewDirections.actionComensalToRegistro()
-                //findNavController().navigate(accion)
             }
         }
 

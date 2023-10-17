@@ -16,6 +16,7 @@
     <color name="Hueso">#D4D4D4</color> //Botones
     <color name="Verde">#5D9F64</color> //Botones
     <color name="RosaFuerte">#D36583</color> //Botones
+    <color name="Azulon">#49839F</color>
     <color name="Rosita">#DB869D</color>
     <color name="Azulin">#99BCD6</color>
 </resources>
