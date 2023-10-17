@@ -39,7 +39,7 @@ class PagoDonativo : Fragment() {
         //Log.e("PAGO DONATIVO", "El pago total es de $totalPorPagar")
         val args: PagoDonativoArgs by navArgs()
         totalPorPagar = args.totalPorPagar
-        binding.textView2.text = "Total a pagar: $totalPorPagar"
+        binding.textView2.text = "Total a pagar: $$totalPorPagar"
         realizarPago()
     }
 

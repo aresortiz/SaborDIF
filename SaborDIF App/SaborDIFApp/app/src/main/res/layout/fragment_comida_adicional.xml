@@ -50,6 +50,14 @@
                     android:layout_marginTop="10dp"
                     android:src="@drawable/comidaextra" />
 
+                <TextView
+                    android:id="@+id/txtNombreComensalComidaAdicional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Comensal: "
+                    tools:text="Comensal: Ares Ortiz Botello" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

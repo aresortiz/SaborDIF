@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.sabordifapp.viewmodel.ComidaAdicionalViewModel
 import com.example.sabordifapp.R
 import com.example.sabordifapp.databinding.FragmentComidaAdicionalBinding
@@ -27,6 +30,7 @@ class ComidaAdicional : Fragment() {
     //biinding
     var listaComidas: MutableList<ComidaDependiente> = mutableListOf()
     var mapaComensalAsociado: MutableMap<String, Int> = mutableMapOf()
+    var mapaComensal: MutableMap<Int, String> = mutableMapOf()
     var costeFinal = 0
     private lateinit var binding: FragmentComidaAdicionalBinding
     private val viewModel: ComidaAdicionalViewModel by viewModels()
@@ -47,19 +51,68 @@ class ComidaAdicional : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val args: PagoDonativoArgs by navArgs()
+        costeFinal += args.totalPorPagar
         registrarEventos()
     }
 
     private fun registrarEventos() {
+        descargarComensales()
         escanearQRDependiente()
         agregarComida()
         enviarComida()
         buscarComensalAsociado()
+        escucharModificaciones()
     }
 
+    private fun escucharModificaciones() {
+
+        val inputDependiente = binding.inputDependienteComida
+        inputDependiente.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // This method is called before the text is changed.
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // This method is called during the text change.
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+                // This method is called after the text is changed.
+                val text = s.toString()
+                if(s != null && text.isNotEmpty()){
+                    val idVal = text.toInt()
+                    val nombre = mapaComensal[idVal]
+                    var newText = ""
+                    newText = if(nombre != null){
+                        "Comensal : $nombre"
+                    }else{
+                        "No hay un Comensal con ese ID"
+                    }
+                    binding.txtNombreComensalComidaAdicional.text = newText
+                }
+
+                // Perform your operation here with the modified text
+            }
+        })
+    }
+
+    private fun descargarComensales() {
+        comensalVm.descargarComensales { comensales ->
+            if(comensales != null){
+                for(comensal in comensales){
+                    mapaComensal[comensal.IdComensal] = "${comensal.nombres} ${comensal.apellidoPaterno} ${comensal.apellidoMatenro}"
+                }
+            }
+        }
+    }
     private fun buscarComensalAsociado() {
         binding.btnBuscarComensalAsociado.setOnClickListener{
-            var idDependiente = binding.inputDependienteComida.text.toString().toInt()
+            val idDependiente = binding.inputDependienteComida.text.toString().toInt()
+ //           val nombreComensal = "Comensal: ${mapaComensal[idDependiente]}"
+//            binding.txtNombreComensalComidaAdicional.text = nombreComensal
+            mapaComensalAsociado.clear()
             comensalVm.descargarDependientes(idDependiente){ comensales ->
                 if(comensales != null){
                     for(comensal in comensales){
