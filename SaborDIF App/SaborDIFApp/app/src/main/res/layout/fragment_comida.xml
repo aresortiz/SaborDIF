@@ -84,7 +84,7 @@
                         android:orientation="vertical">
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/escanearQRDependiente"
+                            android:id="@+id/escanearQRDependienteRegistroComida"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

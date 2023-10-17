@@ -50,38 +50,123 @@
                     android:layout_marginTop="10dp"
                     android:src="@drawable/comidaextra" />
 
-                <TextView
-                    android:id="@+id/txtCantidadComida"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="¿Cuántas?"
-                    android:background="@drawable/boton_hueso"
-                    android:textAlignment="center"
-                    android:textSize="22sp" />
+                    android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/arrComidaAdicionalCantidad" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="20dp"
+
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/IDDependiente"
+                            android:layout_width="318dp"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/inputDependienteComida"
+                                android:layout_width="318dp"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/boton_hueso"
+                                android:fontFamily="@font/poppins"
+                                android:hint="@string/id_dependiente" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/escanearQRDependienteRegistroComida"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="30dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:src="@android:drawable/ic_menu_camera"
+                            app:backgroundTint="@color/Rosita" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"/>
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/txtQuienes"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="20dp"
+
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/IDComensalAsociado"
+                                android:layout_width="318dp"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/inputComensalAsociadoComida"
+                                    android:layout_width="318dp"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/boton_hueso"
+                                    android:fontFamily="@font/poppins"
+                                    android:hint="@string/id_comensal_asociado" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/escanearQRComensalAsociadoComida"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="30dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:src="@android:drawable/ic_menu_camera"
+                                app:backgroundTint="@color/Rosita" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/para_quienes"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-                    android:background="@drawable/boton_hueso"/>
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerPagoComidaDependiente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/PagoDonacion" />
+
+                    <Spinner
+                        android:id="@+id/spinnerLlevarComidaDependiente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:entries="@array/ParaLlevar" />
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/opcionesNombreID"
@@ -89,23 +174,35 @@
                     android:layout_height="match_parent"
                     android:visibility="gone"/>
 
-                <Spinner
-                    android:id="@+id/spinner2"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/arrPersonaComidaAd" />
+                    android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnIrPago"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginTop="80dp"
-                    android:text="@string/proceder_al_pago"
-                    android:textColor="@color/Hueso"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:background="@drawable/boton_navy"
-                    android:textSize="20sp"/>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAgregarAsociadoComida"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@drawable/boton_aqua"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Agregar comida"
+                        android:textColor="@color/Navy"
+                        android:textSize="15sp" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnIrPago"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@drawable/boton_navy"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/proceder_al_pago"
+                        android:textColor="@color/Hueso"
+                        android:textSize="15sp" />
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
