@@ -10,10 +10,10 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,8 +35,8 @@
                     android:id="@+id/txtRegisComidaAdicional"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="30dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="@string/registro_comida_adicional"
                     android:textAlignment="center"
@@ -69,11 +69,12 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/inputDependienteComida"
-                                android:layout_width="318dp"
+                                android:layout_width="300dp"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/boton_hueso"
+                                android:background="@drawable/boton_azulito"
                                 android:fontFamily="@font/poppins"
-                                android:hint="@string/id_dependiente" />
+                                android:hint="@string/id_dependiente"
+                                android:inputType="number" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -87,11 +88,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="25dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:src="@android:drawable/ic_menu_camera"
-                            app:backgroundTint="@color/Rosita" />
+                            app:backgroundTint="@color/AzulClaro" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -120,11 +121,12 @@
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/inputComensalAsociadoComida"
-                                    android:layout_width="318dp"
+                                    android:layout_width="300dp"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/boton_hueso"
+                                    android:background="@drawable/boton_azulito"
                                     android:fontFamily="@font/poppins"
-                                    android:hint="@string/id_comensal_asociado" />
+                                    android:hint="@string/id_comensal_asociado"
+                                    android:inputType="number" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
@@ -138,11 +140,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="30dp"
+                                android:layout_marginTop="25dp"
                                 android:clickable="true"
                                 android:focusable="true"
                                 android:src="@android:drawable/ic_menu_camera"
-                                app:backgroundTint="@color/Rosita" />
+                                app:backgroundTint="@color/AzulClaro" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -172,7 +174,7 @@
                     android:id="@+id/opcionesNombreID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -183,9 +185,9 @@
                         android:id="@+id/btnAgregarAsociadoComida"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginBottom="40dp"
-                        android:background="@drawable/boton_aqua"
+                        android:background="@drawable/boton_azulclaro"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Agregar comida"
                         android:textColor="@color/Navy"
@@ -195,7 +197,7 @@
                         android:id="@+id/btnIrPago"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginBottom="40dp"
                         android:background="@drawable/boton_navy"
                         android:fontFamily="@font/poppins_semibold"
