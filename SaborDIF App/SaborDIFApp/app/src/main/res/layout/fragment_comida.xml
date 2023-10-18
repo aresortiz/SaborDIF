@@ -64,6 +64,7 @@
                     tools:text="Comensal: Rosita Fresita" />
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutComensalComida"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:orientation="horizontal">
@@ -110,6 +111,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSpnPagos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -120,14 +122,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:entries="@array/PagoDonacion"/>
+                        android:entries="@array/PagoDonacion" />
 
                     <Spinner
                         android:id="@+id/spnParaLlevarComidaComensal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:entries="@array/ParaLlevar"/>
+                        android:entries="@array/ParaLlevar" />
                 </LinearLayout>
 
                 <TextView
