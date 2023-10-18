@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.sabordifapp.R
 import com.example.sabordifapp.viewmodel.ShowqrViewModel
 import com.example.sabordifapp.databinding.FragmentShowqrBinding
 import com.google.zxing.BarcodeFormat
@@ -31,6 +33,11 @@ class Showqr : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentShowqrBinding.inflate(layoutInflater)
+        val slideInAnimationLeft = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_left)
+        val slideInAnimatioRight = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_right)
+        binding.txtcodigoQR.startAnimation(slideInAnimationLeft)
+        binding.qrComensal.startAnimation(slideInAnimatioRight)
+        binding.btnRegresar.startAnimation(slideInAnimationLeft)
         return binding.root
     }
 
