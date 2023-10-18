@@ -1,5 +1,6 @@
 package com.example.sabordifapp.view
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.Editable
@@ -80,7 +81,7 @@ class Dependiente : Fragment() {
                     newText = if(nombre != null){
                         "Comensal : $nombre"
                     }else{
-                        "No hay un Comensal con ese ID"
+                        "No hay un comensal con ese ID"
                     }
                     binding.txtDependienteDependiente.text = newText
                 }
@@ -131,16 +132,18 @@ class Dependiente : Fragment() {
         binding.btnRegistrarDependiente.setOnClickListener {
             val idDependiente = binding.inputIDDependiente.text.toString().toInt()
             val idComensalAsociado = binding.inputIDComensal.text.toString().toInt()
-            Log.d("API_TEST", "Datos dependiente: ${idDependiente} ${idComensalAsociado}")
-            val datosDependiente = Dependencia(idDependiente, idComensalAsociado)
 
-            viewModel.registrarDependiente(datosDependiente){ mensaje ->
-                if(mensaje != null){
-                    val accion = DependienteDirections.actionDependienteToRegistro()
-                    findNavController().navigate(accion)
+            Log.d("API_TEST", "Datos dependiente: ${idDependiente} ${idComensalAsociado}")
+
+                val datosDependiente = Dependencia(idDependiente, idComensalAsociado)
+                viewModel.registrarDependiente(datosDependiente){ mensaje ->
+                    if(mensaje != null){
+                        val accion = DependienteDirections.actionDependienteToRegistro()
+                        findNavController().navigate(accion)
+                    }
                 }
             }
-        }
+
     }
 
     private fun obtenerComensales() {

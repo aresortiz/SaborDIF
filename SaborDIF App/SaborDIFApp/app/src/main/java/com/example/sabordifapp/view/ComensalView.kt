@@ -190,26 +190,4 @@ class ComensalView : Fragment() {
         }
 
     }
-
-    private fun mensajeError(error: String){
-        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
-        builder.setTitle("Error")
-            .setMessage(error)
-            .setPositiveButton("OK"){ dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
-    }
-
-    private fun mensajeExitoso(exito: String){
-        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogCustom)
-        builder.setTitle("Acción exitosa")
-            .setMessage(exito)
-            .setPositiveButton("OK"){ dialog, _ ->
-                dialog.dismiss()
-                findNavController().navigateUp()
-            }
-            .show()
-    }
-
 }
