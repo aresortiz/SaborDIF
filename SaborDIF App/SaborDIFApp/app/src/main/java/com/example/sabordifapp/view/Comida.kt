@@ -21,6 +21,9 @@ import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComidaVM
 import com.example.sabordifapp.viewmodel.ComidaViewModel
 import kotlin.math.cos
 
+//Clase que se encarga de manejar la interfaz de usuario y la funcionalidad relacionada con el registro de comidas
+//Incluye el registro de comidas, la obtencion de comensales, la actualizacion de la interfaz en funcion del ID del
+//comensal, y la navegacion a pantallas adicionales
 class Comida : Fragment() {
 
     //binding
@@ -35,6 +38,7 @@ class Comida : Fragment() {
         fun newInstance() = ComensalView()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,6 +57,7 @@ class Comida : Fragment() {
         return binding.root
     }
 
+    //Llamada a funciones para inicializarlas
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         escucharModificaciones()
@@ -61,6 +66,7 @@ class Comida : Fragment() {
         obtenerComensales()
     }
 
+    //Descarga una lista de comensales y los mapea utilizando sus IDs como claves y sus nombres como valores
     private fun obtenerComensales() {
         comensalVm.descargarComensales { comensales ->
             if(comensales != null){
@@ -71,6 +77,8 @@ class Comida : Fragment() {
         }
     }
 
+    //Cuando se realiza un cambio en el campo, busca el nombre del comensal correspondiente en el mapa de
+    //comensales y actualiza el texto
     private fun escucharModificaciones() {
         val inputComensal = binding.inputIDComensalComida
         inputComensal.addTextChangedListener(object : TextWatcher {
@@ -103,6 +111,8 @@ class Comida : Fragment() {
         })
     }
 
+    //Registra una comida adicional y navega a la pantalla comida adicional cuando se hace clic en el boton si
+    //Llama a enviarRegistroComida antes de la navegacion
     private fun registrarComidaAdicional() {
         binding.btnSi.setOnClickListener {
             //val comedorRegistrado = binding.btnRegistrar.isSelected.toString()
@@ -112,6 +122,7 @@ class Comida : Fragment() {
         }
     }
 
+    //Registra una comida y navega a la pantalla de Pago donativo cuando se hace clic en el boton no
     private fun registrarComida(){
         binding.btnNo.setOnClickListener {
             enviarRegistroComida()
@@ -120,6 +131,8 @@ class Comida : Fragment() {
         }
     }
 
+    //Obtiene el ID del comedor y el ID del comensal, calcula el valor de aportacion y si se llevara la comida para
+    //llevar segun las selecciones del usuario, suma el costo de la aaportacion al costo final, y registra la comida
     private fun enviarRegistroComida(){
         val prefs: SharedPreferences = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
         val defaultValue = "0"

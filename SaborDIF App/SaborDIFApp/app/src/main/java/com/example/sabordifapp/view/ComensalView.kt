@@ -22,6 +22,8 @@ import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComensalVM
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.CondicionVM
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
+//Clase que maneja la interfaz de usuario y la funcionalidad relacionada con el registro de comensales,
+//incluyendo la descarga de condiciones, validacion de campos, registro de comensales y escaneo de codigos QR
 class ComensalView : Fragment() {
 
     //binding
@@ -36,6 +38,7 @@ class ComensalView : Fragment() {
         fun newInstance() = ComensalView()
     }
 
+    //Animaciones de los elementos de la interfaz de usuario
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,12 +59,15 @@ class ComensalView : Fragment() {
         return binding.root
     }
 
+    //Llamada a funciones
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         validarCampos()
         condiciones()
     }
 
+    //Funcion que descarga una lista de condiciones, las mapea, crea una lista de nombres y agrega
+    //ninguna/noaplica al principio, y configura un ArrayAdapter para el spinner
     private fun condiciones() {
         viewModel2.descargarCondiciones { List ->
             List?.forEach { objetoCondicion ->
@@ -77,6 +83,8 @@ class ComensalView : Fragment() {
         }
     }
 
+    //Funcion que recibe una cadena de genero como entrada, limpia la cadena eliminando los espacios en blanco,
+    //la convierte en minusculas, y devuelve un valor numerico según la cadena
     private fun obtenerGenero(genero: String): Int {
         val nGenero = genero.lowercase().filterNot { it.isWhitespace() }
         val num = when (nGenero) {
@@ -87,6 +95,8 @@ class ComensalView : Fragment() {
         return num
     }
 
+    //Verifica si se han llenado todos los campos de entrada, si falta alguno, muestra un mensaje de error
+    //Si todos los elementos están llenos, registra u nuevo comensal con la informacion proporcionada
     private fun validarCampos() {
 
         //verificarQR()
@@ -144,6 +154,8 @@ class ComensalView : Fragment() {
             }
         }
 
+    //Observa un LiveData relacionado con el ID del comensal, al recibir el valor almacena el ID en
+    //las preferencias compartidas y navega a la pantalla de escaneo de codigo QR
     private fun registrarObservables(idComensal:Int){
         val sharedPref = requireContext().getSharedPreferences(
             "mySharedPrefs",
@@ -162,6 +174,7 @@ class ComensalView : Fragment() {
         }
     }
 
+    //Configura la funcionalidad de escaneo de codigos QR cuando se hace clic en el boton
     private fun escanearQR()
     {
         Log.d("API_TEST", "Inicia QR")
@@ -183,9 +196,9 @@ class ComensalView : Fragment() {
                     binding.inputNombre.setText(nombreC)
                     binding.inputGenero.setText(genero)
                 }.addOnCanceledListener {
-                    //Task cancelled
+                    //Tarea cancelada
                 }.addOnFailureListener { e ->
-                    //Task failed with an exception
+                    //Tarea fallada con una excepcion
                 }
         }
 

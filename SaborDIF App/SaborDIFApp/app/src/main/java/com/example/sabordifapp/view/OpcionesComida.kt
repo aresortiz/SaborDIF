@@ -15,12 +15,15 @@ import com.example.sabordifapp.databinding.FragmentComidaAdicionalBinding
 import com.example.sabordifapp.databinding.FragmentOpcionesComidaBinding
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComidaVM
 
+//Clase que proprociona una pantalla con dos opciones para el usuario: registrar comida para un dependiente o para un comensal
 class OpcionesComida : Fragment() {
 
     private lateinit var binding: FragmentOpcionesComidaBinding
     companion object {
         fun newInstance() = OpcionesComida()
     }
+
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,18 +38,22 @@ class OpcionesComida : Fragment() {
         return binding.root
     }
 
+    //Llamada a funciones
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registrarComidaComensal()
         registrarComidaDependiente()
     }
 
+    //Metodo que se llama al hacer clic en el boton comida dependiente, y se navega al fragmento ComidaAdicional
     private fun registrarComidaDependiente(){
         binding.btnComidaDependiente.setOnClickListener {
             val accion = OpcionesComidaDirections.actionOpcionesComidaToComidaAdicional()
             findNavController().navigate(accion)
         }
     }
+
+    //Metodo que se llama al hacer clic en el boton comida comensal, y se navega al fragmento ComidaComensal
     private fun registrarComidaComensal(){
         binding.btnComidaComensal.setOnClickListener {
             val accion = OpcionesComidaDirections.actionOpcionesComidaToComida()

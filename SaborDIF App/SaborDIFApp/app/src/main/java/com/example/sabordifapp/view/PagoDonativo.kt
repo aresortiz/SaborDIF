@@ -15,6 +15,7 @@ import com.example.sabordifapp.viewmodel.PagoDonativoViewModel
 import com.example.sabordifapp.R
 import com.example.sabordifapp.databinding.FragmentPagoDonativoBinding
 
+//Fragmento que muestra el monto total a pagar y permite al usuario finalizar el proceso de pago
 class PagoDonativo : Fragment() {
 
     //binding
@@ -27,6 +28,7 @@ class PagoDonativo : Fragment() {
         fun newInstance() = PagoDonativo()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +43,7 @@ class PagoDonativo : Fragment() {
         return binding.root
     }
 
+    //Se obtienen los argumentos pasados y se almacena el valor total a pagar, luego se actualiza el texto con el monto toal
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Log.e("PAGO DONATIVO", "El pago total es de $totalPorPagar")
@@ -50,6 +53,7 @@ class PagoDonativo : Fragment() {
         realizarPago()
     }
 
+    //Metodo que se llama cuando se hace clic en el boton finalizar, navegando al fragmento Registro
     private fun realizarPago() {
         binding.btnFinalizar.setOnClickListener {
             val accion = PagoDonativoDirections.actionPagoDonativoToRegistro()

@@ -22,6 +22,7 @@ import com.example.sabordifapp.viewmodel.ComensalViewModel
 import com.example.sabordifapp.viewmodel.DependienteViewModel
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
+//Registro de un dependiente
 class Dependiente : Fragment() {
 
     //binding
@@ -34,6 +35,7 @@ class Dependiente : Fragment() {
         fun newInstance() = Dependiente()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +61,7 @@ class Dependiente : Fragment() {
 
     }
 
+    //Cuando se realzia un cambio, se actualiza el texto correspondiente (dependiente o comensal asociado)
     private fun escucharModificaciones() {
         val inputDependiente = binding.inputIDDependiente
         inputDependiente.addTextChangedListener(object : TextWatcher{
@@ -117,12 +120,14 @@ class Dependiente : Fragment() {
         })
     }
 
+    //Llamada a funciones
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         escucharModificaciones()
         registrarEventos()
     }
 
+    //Registra un evento para registrar la dependencia entre un dependiente y un comensal asociado
     private fun registrarEventos() {
 
         escanearQRDependiente()
@@ -146,6 +151,7 @@ class Dependiente : Fragment() {
 
     }
 
+    //Descarga la lista de comensales y los mapea
     private fun obtenerComensales() {
         comensalVm.descargarComensales { comensales ->
             if(comensales != null){
@@ -156,6 +162,8 @@ class Dependiente : Fragment() {
         }
     }
 
+    //Inicia la funcionalidad de escaneo de codigos QR para capturar el ID de un dependiente
+    //Cuando se escanea con exito, actualiza el campo de entrada con el ID capturado
     private fun escanearQRDependiente()
     {
         val qrDependiente = GmsBarcodeScanning.getClient(requireContext())
@@ -176,6 +184,8 @@ class Dependiente : Fragment() {
         }
     }
 
+    //Inicia la funcionalidad de escaneo de codigos QR para capturar el ID de un comensal asociado
+    //Cuando se escanea con exito, actualiza el campo de entrada con el ID capturado
     private fun escanearQRComensalAsociado()
     {
         val qrComensalAsociado = GmsBarcodeScanning.getClient(requireContext())

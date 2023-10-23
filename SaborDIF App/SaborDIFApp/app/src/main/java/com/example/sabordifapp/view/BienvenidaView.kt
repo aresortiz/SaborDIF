@@ -20,12 +20,13 @@ import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComedorVM
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ResponsableVM
 import com.example.sabordifapp.viewmodel.BienvenidaViewModel
 
+//Fragmento que se utiliza para mostrar una pantalla de bienvenidad en la aplicacion
 class BienvenidaView : Fragment() {
 
     //var responsableC: ResponsableVM = ResponsableVM()
     //var comedorKK: ComedorVM = ComedorVM()
 
-    //bidning
+    //binding
     private lateinit var binding: FragmentBienvenidaBinding
     private val viewModel:BienvenidaViewModel by viewModels()
 
@@ -33,6 +34,7 @@ class BienvenidaView : Fragment() {
         fun newInstance() = BienvenidaView()
     }
 
+    //Se infla la vista y se devuelve la raíz de la vista
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +43,7 @@ class BienvenidaView : Fragment() {
         return binding.root
     }
 
+    //Se configura la animacion para varios elementos de la interfaz del usuario
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registrarEventos()
@@ -56,6 +59,7 @@ class BienvenidaView : Fragment() {
 
     }
 
+    //Metodo utilizado para animar la escala (cambio de tamaño) de un elemento de la interfaz de usuario
     private fun moveImage(view: View, translationX: Float, translationY: Float, duration: Long) {
 
             // Escala desde 0.1x (pequeña) a 1.0x (tamaño normal)
@@ -71,9 +75,7 @@ class BienvenidaView : Fragment() {
             animatorSet.start()
     }
 
-
-
-
+//Se registra un evento de clic para el boton de inicio de sesion
 private fun registrarEventos() {
         binding.btnIniciarSesion.setOnClickListener {
             val accion = BienvenidaViewDirections.actionBienvenidaToInicio()

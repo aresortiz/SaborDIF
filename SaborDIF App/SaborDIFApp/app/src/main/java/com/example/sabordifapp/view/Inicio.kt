@@ -27,6 +27,7 @@ import com.google.android.gms.common.moduleinstall.ModuleInstallRequest
 import com.google.android.gms.common.moduleinstall.ModuleInstallStatusUpdate
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 
+//Clase que permite a los usuarios iniciar sesion y verificar la disponibilidad del modulo para escanear codigos QR
 class Inicio : Fragment() {
 
     //View binding
@@ -34,6 +35,7 @@ class Inicio : Fragment() {
     private val viewModel: InicioViewModel by viewModels()
     private var mapaComedores: MutableMap<String, Int> = mutableMapOf()
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +46,7 @@ class Inicio : Fragment() {
         return binding.root
     }
 
-
+    //Llamada a las funciones necesarias
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registrarEventos()
@@ -53,6 +55,7 @@ class Inicio : Fragment() {
         instalarModulo()
     }
 
+    //Obtiene la lista de comedores y los muestra en un spinner
     private fun registrarObservables()
     {
         //viewModel.res.observe(viewLifecycleOwner){verificarAcc ->
@@ -65,6 +68,8 @@ class Inicio : Fragment() {
         }
     }
 
+    //Descarga la lista de nombres de comedores y crea un mapa, al hacer clic en ingresar se recupera el comedore seleccionado,
+    //la contraseña ingresada y el ID corespondiente del mapa de comedores
     private fun registrarEventos(){
         viewModel.descargarNombresComedor { List ->
             List?.forEach { objeto ->
@@ -80,11 +85,13 @@ class Inicio : Fragment() {
             val id = mapaComedores.get(comedorSeleccionado)?.toInt()
             val passw = binding.contraC.text.toString()
 
+            //Se guarda el ID del comedor
             val sharedPref = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
             val editor = sharedPref.edit()
             editor.putString("IDComedor", id.toString())
             editor.apply()
 
+            //Se valida el inicio de sesion
             if(id != null){
                 val comedor = Responsable(id, passw)
 
@@ -107,6 +114,7 @@ class Inicio : Fragment() {
         }
     }
 
+    //Verifica la disponibilidad del modulo para escanear codigos QR. Si el modulo no esta instalado se llama a instalarModulo
     private fun verificarQR()
     {
 
@@ -130,6 +138,7 @@ class Inicio : Fragment() {
 
     }
 
+    //Indica la instalacion del modulo
     private fun instalarModulo() {
         val moduleInstallClient = ModuleInstall.getClient(requireContext())
         val optionalModuleApi = GmsBarcodeScanning.getClient(requireContext())
@@ -154,6 +163,7 @@ class Inicio : Fragment() {
             }
     }
 
+    //Implementa InstallStatusListener para manejar el progreso de la instalacion del modulo
     inner class ModuleInstallProgressListener : InstallStatusListener {
         override fun onInstallStatusUpdated(update: ModuleInstallStatusUpdate) {
             // Progress info is only set when modules are in the progress of downloading.

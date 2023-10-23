@@ -19,6 +19,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 
+//Fragmento que muestra un codigo QR generado a partir del ID del comensal almacenado en las preferencias compartidas
 class Showqr : Fragment() {
 
     private lateinit var binding: FragmentShowqrBinding
@@ -28,6 +29,7 @@ class Showqr : Fragment() {
         fun newInstance() = Showqr()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,11 +43,13 @@ class Showqr : Fragment() {
         return binding.root
     }
 
+    //Llamada a funcion
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registrarEventos()
     }
 
+    //Metodo que obtiene el ID del comensal almacenado en sharedPrefs y lo utiliza para generar un codigo QR y mostrarlo
     private fun registrarEventos() {
         val sharedPrefs = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
         val idComensal = sharedPrefs.getString("IDComensal", "")
@@ -58,6 +62,8 @@ class Showqr : Fragment() {
         }
     }
 
+    //Metodo que genera el codigo QR a partir de una cadena (CURP) y crea una matriz de bits que lo represente
+    //Se definen sus dimensiones y colores, y crea un bitmap a partir de la matriz de bits
     private fun generarQR(curp: String) : Bitmap?{
         val codigoQR = QRCodeWriter()
 

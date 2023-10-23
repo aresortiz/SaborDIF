@@ -12,7 +12,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//ViewModel que se encarga de realizar solicitudes a la API relacionadas con responsables
 class ResponsableVM {
+
+    //Configuracion de retrofit para realizar solicitudes HTTP a la API
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("http://34.236.3.58:3000/api/responsable/")
@@ -22,6 +25,8 @@ class ResponsableVM {
     private val postearAPI by lazy {
         retrofit.create(ResponsableAPI::class.java)
     }
+
+    //Metodo que se utiliza para validar el inicio de sesion de un responsable en la aplicacion
     fun validarLogin(responsable: Responsable, callback: (Access?) -> Unit){
         val call = postearAPI.validarLogin(responsable)
         call.enqueue(object : Callback<Access> {
@@ -36,6 +41,7 @@ class ResponsableVM {
                 }
             }
 
+            //Se maneja cualquier error que pueda ocurrir durante la solicitud
             override fun onFailure(call: Call<Access>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")

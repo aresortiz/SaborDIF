@@ -10,8 +10,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//VieModel par ainteractuar con la API de apertura y registrar nuevas aperturas
 class AperturaVM {
 
+    //Configuracion de retrofit para realizar solicitudes HTTP a la API
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl("http://34.236.3.58:3000/api/apertura/")
@@ -21,6 +23,8 @@ class AperturaVM {
     private val postearAPI by lazy {
         retrofit.create(AperturaAPI::class.java)
     }
+
+    //Metodo que se utiliza para registrar una apertura en el servidor
     fun registrarApertura(apertura: Apertura){
         var call = postearAPI.registrarApertura(apertura)
         call.enqueue(object : Callback<message> {
@@ -33,6 +37,7 @@ class AperturaVM {
                 }
             }
 
+            //Se maneja cualquier error que pueda ocurrir durante la solicitud
             override fun onFailure(call: Call<message>, t: Throwable) {
                 println("ERROR: ${t.localizedMessage}")
                 Log.e("API_TEST", "FAILED ${t.localizedMessage}")

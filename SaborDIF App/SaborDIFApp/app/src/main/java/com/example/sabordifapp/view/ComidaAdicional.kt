@@ -26,9 +26,10 @@ import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComidaVM
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import kotlin.math.cos
 
+//Clase para hacer el registro de una comida adicional
 class ComidaAdicional : Fragment() {
 
-    //biinding
+    //binding
     var listaComidas: MutableList<ComidaDependiente> = mutableListOf()
     var mapaComensalAsociado: MutableMap<String, Int> = mutableMapOf()
     var mapaComensal: MutableMap<Int, String> = mutableMapOf()
@@ -42,6 +43,7 @@ class ComidaAdicional : Fragment() {
         fun newInstance() = ComidaAdicional()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,6 +62,7 @@ class ComidaAdicional : Fragment() {
         return binding.root
     }
 
+    //Obtiene argumentos del costo total a pagar, actualiza el costo final y llama a la funcion registrarEventos
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args: PagoDonativoArgs by navArgs()
@@ -67,6 +70,7 @@ class ComidaAdicional : Fragment() {
         registrarEventos()
     }
 
+    //Llamada a funciones
     private fun registrarEventos() {
         descargarComensales()
         escanearQRDependiente()
@@ -76,6 +80,7 @@ class ComidaAdicional : Fragment() {
         escucharModificaciones()
     }
 
+    //Cuando se realiza un cambio, se actualiza el texto
     private fun escucharModificaciones() {
 
         val inputDependiente = binding.inputDependienteComida
@@ -109,6 +114,7 @@ class ComidaAdicional : Fragment() {
         })
     }
 
+    //Descarga una lista de comensales y los mapea
     private fun descargarComensales() {
         comensalVm.descargarComensales { comensales ->
             if(comensales != null){
@@ -118,6 +124,8 @@ class ComidaAdicional : Fragment() {
             }
         }
     }
+
+    //Busca comensales asociados a un dependiente en funcion del ID del dependiente ingresado
     private fun buscarComensalAsociado() {
         binding.btnBuscarComensalAsociado.setOnClickListener{
             val idDependiente = binding.inputDependienteComida.text.toString().toInt()
@@ -143,6 +151,7 @@ class ComidaAdicional : Fragment() {
         }
     }
 
+    //Registra las comidas en la base de datos y navega a la pantalla pago donativo, a la cual le pasa el costo final de las comidas adicionales
     private fun enviarComida() {
         binding.btnIrPago.setOnClickListener{
             Log.d("COMIDA ADICIONAL", "$listaComidas")
@@ -153,6 +162,7 @@ class ComidaAdicional : Fragment() {
 
     }
 
+    //Agrega una comida dependiente a la lista de comidas adicionales, calcula el valor de aportacion, sima el costo y agrega la comida
     private fun agregarComida() {
         binding.btnAgregarAsociadoComida.setOnClickListener {
             val prefs: SharedPreferences = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
@@ -181,6 +191,7 @@ class ComidaAdicional : Fragment() {
 
     }
 
+    //Inicia la funcionalidad de escaneo de codigos QR para capturar el ID de un dependiente
     private fun escanearQRDependiente() {
         val qrDependiente = GmsBarcodeScanning.getClient(requireContext())
         binding.escanearQRDependienteRegistroComida.setOnClickListener{

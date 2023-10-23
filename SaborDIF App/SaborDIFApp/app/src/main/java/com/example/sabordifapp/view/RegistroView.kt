@@ -18,6 +18,8 @@ import com.example.sabordifapp.databinding.FragmentRegistroBinding
 import com.example.sabordifapp.viewmodel.APIVM.viewmodel.ComedorVM
 import com.example.sabordifapp.viewmodel.RegistroViewModel
 
+//Fragmento que proporciona opciones para registrar comensales, dependientes y comidas, así como para mostrar información
+//sobre comidas vendidas y donadas. Tambien permite a los usuarios contactar al DIF
 class RegistroView : Fragment() {
 
     //binding
@@ -29,6 +31,7 @@ class RegistroView : Fragment() {
         fun newInstance() = RegistroView()
     }
 
+    //Animaciones
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +53,7 @@ class RegistroView : Fragment() {
         return binding.root
     }
 
+    //Llamada a las funciones necesarias
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         registrarComensal()
@@ -60,6 +64,8 @@ class RegistroView : Fragment() {
 
     }
 
+    //Metodo que obtiene el ID del comedot alamacenado en las preferencias compartidas
+    //Se utiliza ese ID para descargar  informacion sobre comidas vendidas y donadas, actualizando las vistas con los valores obtenidos
     private fun descargarRegistroDeComidasVendidas() {
         val prefs: SharedPreferences = requireContext().getSharedPreferences("mySharedPrefs", Context.MODE_PRIVATE)
         val defaultValue = "0"
@@ -74,6 +80,7 @@ class RegistroView : Fragment() {
         }
     }
 
+    //Metodo que se llama cuando se da clic en el boton registro comensal, lo cual lleva al fragmento Comensal
     private fun registrarComensal(){
         binding.btnRegistroComensal.setOnClickListener {
             //val comedorRegistrado = binding.btnRegistroComensal.toString()
@@ -84,6 +91,7 @@ class RegistroView : Fragment() {
         }
     }
 
+    //Metodo que se llama cuando se da clic en el boton registro dependietne, navegando asi al fragmento Dependiente
     private fun registrarDependiente(){
         binding.btnRegistroDependiente.setOnClickListener {
             val accion = RegistroViewDirections.actionRegistroToDependiente()
@@ -91,6 +99,7 @@ class RegistroView : Fragment() {
         }
     }
 
+    //Metodo que se llama al hacer clic en el boton registro comida, lo que llevara a la navegacion del fragmento Dependiente
     private fun registrarComida(){
         binding.btnRegistroComida.setOnClickListener {
             val accion = RegistroViewDirections.actionRegistroToOpcionesComida()
@@ -98,10 +107,12 @@ class RegistroView : Fragment() {
         }
     }
 
+    //Metodo que se llama al hacer clic en el boton contactar DIF
+    //Se iniciara una intencion para marcar un numero telefonico utilizando la app de llamadas del dispositivo
     private fun contactarDIF(){
         binding .btnContactarDIF.setOnClickListener{
             Log.d("API_TEST", "Boton presionado")
-            val numeroTelefonico = "5528178518"
+            val numeroTelefonico = "0000000000"
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:$numeroTelefonico")
 
